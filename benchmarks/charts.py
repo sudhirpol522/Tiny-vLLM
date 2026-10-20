@@ -27,7 +27,7 @@ def save(fig, path, note):
     plt.close(fig)
 
 
-def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per call (median)'):
+def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per call (median)', legend_loc='lower right'):
     fig, ax = plt.subplots(figsize=(9.5, 5))
     y = np.arange(len(labels))
     height = 0.7 / len(series)
@@ -41,7 +41,7 @@ def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per cal
     ax.invert_yaxis()
     ax.set_axisbelow(True)
     ax.grid(axis='x', alpha=0.16)
-    ax.legend(loc='lower right', frameon=False)
+    ax.legend(loc=legend_loc, frameon=False)
     save(fig, path, note)
 
 
@@ -111,10 +111,20 @@ def plot_loading(rows, path):
            'Local random-weight fixture · config, CPU model construction, weight copies, device transfer · 7 loads')
 
 
+def plot_generation(rows, path):
+    paired(rows, [f'{r["device"].upper()} · {r["workload"]}' for r in rows],
+           [('Tiny-vLLM', [r['tiny_vllm_median_ms'] for r in rows]),
+            ('HF static batch (eager)', [r['hf_static_median_ms'] for r in rows])],
+           'Offline generation · local random-weight fixture', path,
+           '86,528 parameters · vocabulary 97 · 16 outputs/request · 7 runs · token-identical results',
+           xlabel='Milliseconds per complete workload (median)', legend_loc='upper right')
+
+
 def main():
     output = Path('benchmarks/results')
     for name, render in [('kv_cache', plot_kv), ('scheduler', plot_scheduler), ('model', plot_model),
-                         ('sampling', plot_sampling), ('loading', plot_loading)]:
+                         ('sampling', plot_sampling), ('loading', plot_loading),
+                         ('generation', plot_generation)]:
         file = output / f'{name}.json'
         if file.exists():
             render(json.loads(file.read_text())['rows'], output / f'{name}.png')

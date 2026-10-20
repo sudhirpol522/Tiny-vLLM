@@ -7,9 +7,10 @@ LLM inference components for CPU and Apple Silicon, built up one part at a time.
 - Qwen-style decoder layers with a PyTorch reference attention backend.
 - Local or Hugging Face safetensors loading on CPU and MPS.
 - Greedy, temperature, top-k, and top-p sampling.
+- Offline generation with incremental output, EOS handling, and cancellation.
 
-The runner and text-serving API are next. FlashAttention and CUDA graphs are not
-used on the Mac.
+The generation loop connects the scheduler, model, cache, and sampler. HTTP
+serving is next. FlashAttention and CUDA graphs are not used on the Mac.
 
 ## Setup
 
@@ -20,33 +21,36 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 python -m unittest discover -s tests -v
-python -m examples.checkpoint_demo --device mps
+python -m examples.generate --device mps
 ```
 
-Use `cpu` when MPS is unavailable. The demo uses a local random-weight checkpoint;
-`--model <directory-or-hub-id>` loads a compatible checkpoint. **48 tests pass** on the M5,
-including local Qwen3 checkpoint comparisons against Hugging Face.
+Use `cpu` when MPS is unavailable. The demo uses random weights and a synthetic
+vocabulary. For a compatible checkpoint, pass `--model <directory-or-hub-id>` and
+`--prompt "Your prompt"`. **62 tests pass**, including Hugging Face generation
+parity, prefix reuse, preemption, and CPU/MPS checks.
 
 ## Benchmarks
 
-Apple M5 · float32 · PyTorch 2.14.1 · one CPU thread. Times are medians.
-Model tests use random weights; these are component timings, not generation speed.
+Apple M5 · float32 · PyTorch 2.14.1 · one CPU thread. Seven-run medians, in ms.
+Generation uses an **86,528-parameter random model with vocabulary size 97**,
+producing 16 tokens per request. Every run matches Hugging Face's output tokens.
 
-| Workload | CPU | MPS |
-| --- | ---: | ---: |
-| Model prefill, 128 tokens (3.54M parameters) | 2.602 ms | 1.260 ms |
-| Model decode, 1 token at context 256 | 0.564 ms | 1.094 ms |
-| Filtered sampling, 8 requests × 32,768 logits | 13.556 ms | 1.920 ms |
-| Local checkpoint load (86,528 parameters, warm filesystem cache) | 1.095 ms | 6.646 ms |
+| Workload | Tiny-vLLM CPU | HF CPU | Tiny-vLLM MPS | HF MPS |
+| --- | ---: | ---: | ---: | ---: |
+| 1 request, 32-token prompt | 3.42 | 5.06 | 56.46 | 56.77 |
+| 8 requests, mixed prompt lengths | 10.08 | 7.44 | 123.94 | 63.67 |
+| 8 requests, shared 24-token prefix | 8.36 | 6.46 | 104.09 | 62.08 |
 
-![Model forward timings](benchmarks/results/model.png)
+![Offline generation timings](benchmarks/results/generation.png)
 
-![Token sampling timings](benchmarks/results/sampling.png)
+These are tiny-fixture results, not pretrained-model performance. HF uses eager
+attention and one padded batch; Tiny-vLLM uses paged reference attention and
+continuous batching. Model loading is excluded from timing.
 
 Run the latest benchmark and regenerate all Matplotlib charts:
 
 ```bash
-python -m benchmarks.loading_sampling --devices cpu mps
+python -m benchmarks.generation --devices cpu mps
 python -m benchmarks.charts
 ```
 
@@ -55,7 +59,9 @@ python -m benchmarks.charts
 [Scheduler](benchmarks/results/scheduler.png) ·
 [CPU attention](benchmarks/results/attention_cpu.png) ·
 [MPS attention](benchmarks/results/attention_mps.png) ·
-[Loading](benchmarks/results/loading.png)
+[Model](benchmarks/results/model.png) ·
+[Loading](benchmarks/results/loading.png) ·
+[Sampling](benchmarks/results/sampling.png)
 
 Implementation extracted and adapted from [tinyserve](https://github.com/priyammaz/tinyserve).
 [Implementation notes](UPSTREAM.md).

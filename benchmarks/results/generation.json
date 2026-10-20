@@ -1,0 +1,307 @@
+{
+  "timestamp_utc": "2026-10-20T22:12:15.989867+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "parameters": 86528,
+  "vocab_size": 97,
+  "weights": "local random Qwen3 fixture, seed 23",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "cpu_threads": 1,
+  "dtype": "float32",
+  "samples": 7,
+  "warmup_runs": 1,
+  "output_tokens_per_request": 16,
+  "generation": "greedy, EOS ignored for fixed output length",
+  "engine_config": {
+    "max_model_len": 128,
+    "block_size": 8,
+    "max_num_seqs": 8,
+    "max_num_batched_tokens": 64,
+    "num_blocks": 129
+  },
+  "hf_backend": "eager attention; one padded static batch per workload",
+  "timing_scope": "offline generation loop, input packing, sampling and returned output IDs; engine also detokenizes",
+  "excluded": "checkpoint loading, cache allocation, warmup and correctness checks",
+  "cache": "prefix metadata reset before each measured engine run",
+  "synchronization": "MPS synchronized before and after each generation run",
+  "rows": [
+    {
+      "workload": "single-32",
+      "device": "cpu",
+      "requests": 1,
+      "prompt_lengths": [
+        32
+      ],
+      "output_tokens": 16,
+      "tiny_vllm_median_ms": 3.417959,
+      "hf_static_median_ms": 5.062916,
+      "samples_ms": {
+        "tiny_vllm": [
+          3.409083,
+          3.572042,
+          3.417959,
+          3.515625,
+          3.364833,
+          3.6005,
+          3.405333
+        ],
+        "hf_static": [
+          5.130459,
+          5.2625,
+          5.07025,
+          5.025625,
+          5.062916,
+          5.049708,
+          4.932
+        ]
+      },
+      "cached_prompt_tokens": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "token_identical": true
+    },
+    {
+      "workload": "mixed-8",
+      "device": "cpu",
+      "requests": 8,
+      "prompt_lengths": [
+        16,
+        24,
+        32,
+        40,
+        48,
+        56,
+        64,
+        72
+      ],
+      "output_tokens": 128,
+      "tiny_vllm_median_ms": 10.083667,
+      "hf_static_median_ms": 7.443875,
+      "samples_ms": {
+        "tiny_vllm": [
+          10.141125,
+          10.118125,
+          10.04425,
+          9.985209,
+          9.868208,
+          10.136,
+          10.083667
+        ],
+        "hf_static": [
+          7.51125,
+          7.342083,
+          7.486125,
+          7.368417,
+          7.857208,
+          7.291458,
+          7.443875
+        ]
+      },
+      "cached_prompt_tokens": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "token_identical": true
+    },
+    {
+      "workload": "shared-8",
+      "device": "cpu",
+      "requests": 8,
+      "prompt_lengths": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "output_tokens": 128,
+      "tiny_vllm_median_ms": 8.363625,
+      "hf_static_median_ms": 6.464625,
+      "samples_ms": {
+        "tiny_vllm": [
+          8.291708,
+          8.590459,
+          8.3535,
+          8.611416,
+          8.351166,
+          8.4525,
+          8.363625
+        ],
+        "hf_static": [
+          6.494625,
+          6.458584,
+          6.653042,
+          6.394583,
+          6.464625,
+          6.422958,
+          6.478625
+        ]
+      },
+      "cached_prompt_tokens": [
+        168,
+        168,
+        168,
+        168,
+        168,
+        168,
+        168
+      ],
+      "token_identical": true
+    },
+    {
+      "workload": "single-32",
+      "device": "mps",
+      "requests": 1,
+      "prompt_lengths": [
+        32
+      ],
+      "output_tokens": 16,
+      "tiny_vllm_median_ms": 56.461792,
+      "hf_static_median_ms": 56.766,
+      "samples_ms": {
+        "tiny_vllm": [
+          43.241792,
+          56.461792,
+          53.773125,
+          67.820833,
+          59.796166,
+          68.435583,
+          55.304834
+        ],
+        "hf_static": [
+          56.766,
+          52.576875,
+          56.661375,
+          58.926166,
+          62.783,
+          55.611417,
+          62.778667
+        ]
+      },
+      "cached_prompt_tokens": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "token_identical": true
+    },
+    {
+      "workload": "mixed-8",
+      "device": "mps",
+      "requests": 8,
+      "prompt_lengths": [
+        16,
+        24,
+        32,
+        40,
+        48,
+        56,
+        64,
+        72
+      ],
+      "output_tokens": 128,
+      "tiny_vllm_median_ms": 123.942333,
+      "hf_static_median_ms": 63.670041,
+      "samples_ms": {
+        "tiny_vllm": [
+          86.80525,
+          115.550083,
+          123.942333,
+          124.085583,
+          125.801375,
+          115.959542,
+          127.844792
+        ],
+        "hf_static": [
+          63.670041,
+          60.987709,
+          65.984916,
+          67.294583,
+          59.21175,
+          50.358875,
+          64.133291
+        ]
+      },
+      "cached_prompt_tokens": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "token_identical": true
+    },
+    {
+      "workload": "shared-8",
+      "device": "mps",
+      "requests": 8,
+      "prompt_lengths": [
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32,
+        32
+      ],
+      "output_tokens": 128,
+      "tiny_vllm_median_ms": 104.093166,
+      "hf_static_median_ms": 62.077791,
+      "samples_ms": {
+        "tiny_vllm": [
+          105.462875,
+          102.607083,
+          104.093166,
+          104.135292,
+          104.793208,
+          98.01725,
+          101.25825
+        ],
+        "hf_static": [
+          72.457292,
+          62.077791,
+          67.759375,
+          60.687916,
+          59.433792,
+          51.705167,
+          67.359
+        ]
+      },
+      "cached_prompt_tokens": [
+        168,
+        168,
+        168,
+        168,
+        168,
+        168,
+        168
+      ],
+      "token_identical": true
+    }
+  ]
+}

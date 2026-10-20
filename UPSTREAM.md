@@ -65,6 +65,27 @@ No pretrained model was downloaded for these results. Loading and sampling
 benchmarks and the checkpoint demo are local additions. All benchmark charts
 are now generated with Matplotlib from the saved JSON measurements.
 
+The sixth component adds `tiny_vllm/runner.py` and `tiny_vllm/engine.py` from the
+same upstream source blob. The runner's `_prepare` method, `Output`, and
+`Detokenizer` definitions are preserved verbatim. `ModelRunner` construction,
+cache allocation, and eager `run` are adapted to CPU/MPS: explicit block counts
+replace CUDA memory profiling, CUDA graph paths are omitted, and attention
+metadata is assigned in the extracted model module and restored after execution.
+
+`Engine` retains upstream admission, stepping, sampling, incremental decoding,
+completion, abort, and offline batch flow. CUDA graph initialization is omitted;
+input validation additionally rejects invalid token IDs, duplicate active IDs,
+nonpositive output limits, incomplete forced-token sequences, and parameter-list
+length mismatches. `EngineConfig` supplies the Mac runner's settings and rejects
+cache pools too small for a max-length request.
+
+The local generation fixture adds a synthetic tokenizer to the random Qwen3
+checkpoint. Tests compare greedy token sequences and teacher-forced logprobs
+against Hugging Face, including chunking, prefix reuse, and preemption. The
+offline generation benchmark compares the same random checkpoint using our
+reference backend and Hugging Face eager attention. It is not a pretrained-model
+or production-serving benchmark.
+
 No license file was present in the upstream root listing when inspected. No
 license is granted here for the upstream code. Reuse/distribution permission
 needs to be established before publishing the copied source.
