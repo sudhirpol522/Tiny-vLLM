@@ -27,7 +27,7 @@ def save(fig, path, note):
     plt.close(fig)
 
 
-def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per call (median)', legend_loc='lower right'):
+def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per call (median)', legend_loc='lower right', value_format='.3f'):
     fig, ax = plt.subplots(figsize=(9.5, 5))
     y = np.arange(len(labels))
     height = 0.7 / len(series)
@@ -35,7 +35,7 @@ def paired(rows, labels, series, title, path, note, xlabel='Milliseconds per cal
     for index, (label, values) in enumerate(series):
         pos = y - 0.35 + height * (index + 0.5)
         bars = ax.barh(pos, values, height=height * 0.88, label=label, color=COLORS[index])
-        ax.bar_label(bars, labels=[f'{v:.3f}' for v in values], padding=4, fontsize=8)
+        ax.bar_label(bars, labels=[format(v, value_format) for v in values], padding=4, fontsize=8)
     ax.set(yticks=y, yticklabels=labels, xlabel=xlabel,
            title=title, xlim=(0, maximum * 1.24))
     ax.invert_yaxis()
@@ -120,6 +120,15 @@ def plot_generation(rows, path):
            xlabel='Milliseconds per complete workload (median)', legend_loc='upper right')
 
 
+def plot_generation_throughput(rows, path):
+    paired(rows, [f'{r["device"].upper()} · {r["workload"]}' for r in rows],
+           [('Tiny-vLLM', [r['output_tokens'] * 1000 / r['tiny_vllm_median_ms'] for r in rows]),
+            ('HF static batch (eager)', [r['output_tokens'] * 1000 / r['hf_static_median_ms'] for r in rows])],
+           'Generation throughput · local random-weight fixture', path,
+           '86,528 parameters · vocabulary 97 · 16 outputs/request · includes prefill · loading excluded',
+           xlabel='Aggregate output tokens/second (higher is faster)', legend_loc='lower right', value_format='.0f')
+
+
 def plot_http(rows, path):
     groups = list(dict.fromkeys((r['device'], r['concurrency']) for r in rows))
     paired(rows, [f'{device.upper()} · {count} concurrent' for device, count in groups],
@@ -145,6 +154,9 @@ def main():
         data = json.loads(file.read_text())
         for device in data['devices']:
             plot_attention(data['rows'], device, output / f'attention_{device}.png')
+    file = output / 'generation.json'
+    if file.exists():
+        plot_generation_throughput(json.loads(file.read_text())['rows'], output / 'throughput.png')
     print('Matplotlib charts saved in benchmarks/results')
 
 

@@ -68,7 +68,9 @@
         0,
         0
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 4681.156210475316,
+      "hf_static_output_tokens_per_second": 3160.234141747562
     },
     {
       "workload": "mixed-8",
@@ -116,7 +118,9 @@
         0,
         0
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 12693.794826822425,
+      "hf_static_output_tokens_per_second": 17195.34516632802
     },
     {
       "workload": "shared-8",
@@ -164,7 +168,9 @@
         168,
         168
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 15304.368620066058,
+      "hf_static_output_tokens_per_second": 19800.065742405786
     },
     {
       "workload": "single-32",
@@ -205,7 +211,9 @@
         0,
         0
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 283.377474097882,
+      "hf_static_output_tokens_per_second": 281.8588591762675
     },
     {
       "workload": "mixed-8",
@@ -253,7 +261,9 @@
         0,
         0
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 1032.7383461468326,
+      "hf_static_output_tokens_per_second": 2010.3646548617742
     },
     {
       "workload": "shared-8",
@@ -301,7 +311,9 @@
         168,
         168
       ],
-      "token_identical": true
+      "token_identical": true,
+      "tiny_vllm_output_tokens_per_second": 1229.667661371737,
+      "hf_static_output_tokens_per_second": 2061.9290399685774
     }
   ]
 }

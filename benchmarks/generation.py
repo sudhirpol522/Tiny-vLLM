@@ -10,7 +10,7 @@ from pathlib import Path
 
 import torch
 
-from benchmarks.charts import plot_generation
+from benchmarks.charts import plot_generation, plot_generation_throughput
 from benchmarks.generation_inputs import generation_fixture
 from tiny_vllm.config import EngineConfig
 from tiny_vllm.engine import Engine
@@ -101,9 +101,13 @@ def main():
                            hf_static_median_ms=statistics.median(samples['hf_static']),
                            samples_ms=samples, cached_prompt_tokens=cached,
                            token_identical=True)
+                row['tiny_vllm_output_tokens_per_second'] = row['output_tokens'] * 1000 / row['tiny_vllm_median_ms']
+                row['hf_static_output_tokens_per_second'] = row['output_tokens'] * 1000 / row['hf_static_median_ms']
                 rows.append(row)
                 print(f"{device} {name}: Tiny-vLLM {row['tiny_vllm_median_ms']:.2f} ms, "
-                      f"HF {row['hf_static_median_ms']:.2f} ms; token-identical", flush=True)
+                      f"{row['tiny_vllm_output_tokens_per_second']:.0f} output tok/s; "
+                      f"HF {row['hf_static_median_ms']:.2f} ms, "
+                      f"{row['hf_static_output_tokens_per_second']:.0f} output tok/s; token-identical", flush=True)
             del engine
     result = dict(timestamp_utc=datetime.now(timezone.utc).isoformat(),
                   python=platform.python_version(), torch=torch.__version__, os=platform.platform(),
@@ -122,6 +126,7 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     (output / 'generation.json').write_text(json.dumps(result, indent=2) + '\n')
     plot_generation(rows, output / 'generation.png')
+    plot_generation_throughput(rows, output / 'throughput.png')
 
 
 if __name__ == '__main__':

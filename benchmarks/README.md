@@ -38,6 +38,14 @@ cache allocation are excluded; input packing, sampling, and returned token IDs
 are included. Tiny-vLLM also incrementally decodes text. Method order alternates
 across seven runs; every measured output is checked for token identity.
 
+Generation throughput is aggregate generated output tokens divided by median
+workload wall time in seconds: 16 tokens for one request, 128 for eight. This
+includes prefill and is not a decode-only per-request rate. The JSON stores
+`tiny_vllm_output_tokens_per_second` and `hf_static_output_tokens_per_second`;
+these fields are derived from the original saved timings, without a new run.
+
+![Aggregate output token throughput](results/throughput.png)
+
 The HTTP benchmark uses Uvicorn on an ephemeral loopback port and the same tiny
 fixture. Repeated 16-token prompts keep the prefix cache warm. JSON/SSE mode
 order alternates across seven runs at concurrency 1 and 4, after one warmup per
