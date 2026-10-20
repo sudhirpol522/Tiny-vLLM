@@ -1,0 +1,135 @@
+{
+  "timestamp_utc": "2026-10-20T21:46:34.344582+00:00",
+  "python": "3.14.6",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "chip": "Chip: Apple M5",
+  "device": "CPU",
+  "prompt_tokens": 1024,
+  "block_size": 16,
+  "requests": 1000,
+  "repeats": 9,
+  "warmup_requests_per_case": 100,
+  "timing_scope": "request construction, lookup, allocation, release; no KV tensors or model",
+  "rows": [
+    {
+      "shared_prefix_tokens": 0,
+      "caching": false,
+      "median_ms": 12.055542,
+      "min_ms": 11.43175,
+      "max_ms": 12.595209,
+      "samples_ms": [
+        11.43175,
+        12.178833,
+        12.595209,
+        11.858542,
+        12.055542,
+        12.083375,
+        12.291125,
+        11.783167,
+        12.036458
+      ],
+      "reusable_prompt_tokens": 0,
+      "reusable_percent": 0.0
+    },
+    {
+      "shared_prefix_tokens": 0,
+      "caching": true,
+      "median_ms": 32.384625,
+      "min_ms": 31.518667,
+      "max_ms": 34.775583,
+      "samples_ms": [
+        32.384625,
+        33.13475,
+        34.775583,
+        32.079417,
+        33.13675,
+        31.518667,
+        33.395166,
+        32.264625,
+        32.011917
+      ],
+      "reusable_prompt_tokens": 0,
+      "reusable_percent": 0.0
+    },
+    {
+      "shared_prefix_tokens": 256,
+      "caching": false,
+      "median_ms": 12.961375,
+      "min_ms": 12.752208,
+      "max_ms": 14.539083,
+      "samples_ms": [
+        13.774916,
+        13.749291,
+        14.539083,
+        12.752208,
+        12.961375,
+        12.84575,
+        13.129333,
+        12.861709,
+        12.945792
+      ],
+      "reusable_prompt_tokens": 0,
+      "reusable_percent": 0.0
+    },
+    {
+      "shared_prefix_tokens": 256,
+      "caching": true,
+      "median_ms": 30.328084,
+      "min_ms": 30.009916,
+      "max_ms": 31.944166,
+      "samples_ms": [
+        31.944166,
+        31.439,
+        30.893708,
+        30.038542,
+        30.778209,
+        30.328084,
+        30.037875,
+        30.2025,
+        30.009916
+      ],
+      "reusable_prompt_tokens": 255744,
+      "reusable_percent": 24.975
+    },
+    {
+      "shared_prefix_tokens": 768,
+      "caching": false,
+      "median_ms": 14.471833,
+      "min_ms": 14.074125,
+      "max_ms": 20.820209,
+      "samples_ms": [
+        14.791459,
+        15.278209,
+        14.441375,
+        14.471833,
+        20.820209,
+        14.424042,
+        15.070625,
+        14.358916,
+        14.074125
+      ],
+      "reusable_prompt_tokens": 0,
+      "reusable_percent": 0.0
+    },
+    {
+      "shared_prefix_tokens": 768,
+      "caching": true,
+      "median_ms": 30.604666,
+      "min_ms": 30.099334,
+      "max_ms": 32.111209,
+      "samples_ms": [
+        31.115958,
+        31.518792,
+        30.604666,
+        30.435042,
+        32.111209,
+        30.648583,
+        30.350292,
+        30.238208,
+        30.099334
+      ],
+      "reusable_prompt_tokens": 767232,
+      "reusable_percent": 74.925
+    }
+  ]
+}

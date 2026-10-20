@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-10-20T22:04:51.342991+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "cpu_threads": 1,
+  "dtype": "float32",
+  "samples": 7,
+  "synchronization": "MPS synchronized before and after each sample",
+  "parameters": 86528,
+  "checkpoint_bytes": 348624,
+  "checkpoint": "local random-weight Qwen3 fixture, seed 23; no network",
+  "warmup_loads": 1,
+  "calls_per_sample": 1,
+  "max_position": 64,
+  "timing_scope": "config parse, CPU model construction, safetensors copies, device transfer; imports excluded",
+  "cache": "warm filesystem cache; not download or cold-disk timing",
+  "rows": [
+    {
+      "device": "cpu",
+      "median_ms": 1.095042,
+      "samples_ms": [
+        1.229416,
+        1.194833,
+        1.110333,
+        1.08925,
+        1.0695,
+        1.095042,
+        1.071792
+      ]
+    },
+    {
+      "device": "mps",
+      "median_ms": 6.6455,
+      "samples_ms": [
+        11.471666,
+        9.20675,
+        10.80475,
+        6.457083,
+        6.6455,
+        6.501458,
+        6.441
+      ]
+    }
+  ]
+}

@@ -1,0 +1,780 @@
+{
+  "timestamp_utc": "2026-10-20T21:50:07.004248+00:00",
+  "python": "3.14.6",
+  "os": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "chip": "Chip: Apple M5",
+  "device": "CPU",
+  "requests": 128,
+  "output_tokens_per_request": 32,
+  "prompt_lengths": [
+    64,
+    256,
+    512,
+    1024
+  ],
+  "shared_prefix_tokens": 32,
+  "block_size": 16,
+  "num_blocks": 4097,
+  "repeats": 9,
+  "warmup_requests_per_case": 8,
+  "arrival": "all queued before timing",
+  "timing_scope": "scheduling, synthetic token append, completion and page release; excludes request construction",
+  "rows": [
+    {
+      "max_num_seqs": 1,
+      "token_budget": 128,
+      "median_wall_ms": 8.405084,
+      "median_schedule_ms": 6.425323,
+      "steps": 4448,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 10.414793165467627,
+      "samples": [
+        {
+          "wall_ms": 8.565125,
+          "schedule_ms": 6.461651,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.358916,
+          "schedule_ms": 6.371949,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.372125,
+          "schedule_ms": 6.37531,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.4195,
+          "schedule_ms": 6.425323,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.405084,
+          "schedule_ms": 6.430034,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.456292,
+          "schedule_ms": 6.459286,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.281334,
+          "schedule_ms": 6.323181,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.3615,
+          "schedule_ms": 6.384612,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 8.469,
+          "schedule_ms": 6.462452,
+          "steps": 4448,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 10.414793165467627,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 1,
+      "token_budget": 512,
+      "median_wall_ms": 7.900041,
+      "median_schedule_ms": 5.994304,
+      "steps": 4128,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 2.805535368217054,
+      "samples": [
+        {
+          "wall_ms": 7.875667,
+          "schedule_ms": 5.956399,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.943333,
+          "schedule_ms": 6.036505,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.900041,
+          "schedule_ms": 5.993262,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.902375,
+          "schedule_ms": 5.997303,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.8505,
+          "schedule_ms": 5.967782,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.888834,
+          "schedule_ms": 5.997978,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.868042,
+          "schedule_ms": 5.980002,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.903291,
+          "schedule_ms": 6.008591,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.9185,
+          "schedule_ms": 5.994304,
+          "steps": 4128,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 2.805535368217054,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 1,
+      "token_budget": 2048,
+      "median_wall_ms": 7.904291,
+      "median_schedule_ms": 5.999526,
+      "steps": 4096,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 0.7068634033203125,
+      "samples": [
+        {
+          "wall_ms": 8.0255,
+          "schedule_ms": 6.097277,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.897042,
+          "schedule_ms": 5.996114,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.845042,
+          "schedule_ms": 5.947986,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.938458,
+          "schedule_ms": 6.037308,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.902584,
+          "schedule_ms": 5.997315,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.991459,
+          "schedule_ms": 6.077671,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.904291,
+          "schedule_ms": 6.00015,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.89375,
+          "schedule_ms": 5.981675,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.924292,
+          "schedule_ms": 5.999526,
+          "steps": 4096,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 0.7068634033203125,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 8,
+      "token_budget": 128,
+      "median_wall_ms": 7.44825,
+      "median_schedule_ms": 6.218706,
+      "steps": 660,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 70.18939393939394,
+      "samples": [
+        {
+          "wall_ms": 7.339166,
+          "schedule_ms": 6.129503,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.438209,
+          "schedule_ms": 6.211676,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.473459,
+          "schedule_ms": 6.237793,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.354708,
+          "schedule_ms": 6.121738,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.37775,
+          "schedule_ms": 6.15796,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.637,
+          "schedule_ms": 6.376205,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.499834,
+          "schedule_ms": 6.265813,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.486125,
+          "schedule_ms": 6.251918,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.44825,
+          "schedule_ms": 6.218706,
+          "steps": 660,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 70.18939393939394,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 8,
+      "token_budget": 512,
+      "median_wall_ms": 7.004417,
+      "median_schedule_ms": 5.81705,
+      "steps": 534,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 21.687734082397004,
+      "samples": [
+        {
+          "wall_ms": 6.90325,
+          "schedule_ms": 5.73869,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.031625,
+          "schedule_ms": 5.838365,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.908875,
+          "schedule_ms": 5.748453,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.946375,
+          "schedule_ms": 5.767281,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.023875,
+          "schedule_ms": 5.829369,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.919542,
+          "schedule_ms": 5.743535,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.011167,
+          "schedule_ms": 5.81705,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.004417,
+          "schedule_ms": 5.821807,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.029292,
+          "schedule_ms": 5.851454,
+          "steps": 534,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.687734082397004,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 8,
+      "token_budget": 2048,
+      "median_wall_ms": 6.814459,
+      "median_schedule_ms": 5.664715,
+      "steps": 513,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 5.643884015594542,
+      "samples": [
+        {
+          "wall_ms": 6.814459,
+          "schedule_ms": 5.648684,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.827084,
+          "schedule_ms": 5.682007,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.79,
+          "schedule_ms": 5.640825,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.812041,
+          "schedule_ms": 5.664715,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.869334,
+          "schedule_ms": 5.708208,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.804125,
+          "schedule_ms": 5.664239,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.725459,
+          "schedule_ms": 5.601175,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.852667,
+          "schedule_ms": 5.69442,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.898125,
+          "schedule_ms": 5.741957,
+          "steps": 513,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 5.643884015594542,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 32,
+      "token_budget": 128,
+      "median_wall_ms": 7.427416,
+      "median_schedule_ms": 6.237119,
+      "steps": 494,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 93.7753036437247,
+      "samples": [
+        {
+          "wall_ms": 7.352375,
+          "schedule_ms": 6.179774,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.435,
+          "schedule_ms": 6.237119,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.418917,
+          "schedule_ms": 6.233569,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.469167,
+          "schedule_ms": 6.276368,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.427416,
+          "schedule_ms": 6.257833,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.350583,
+          "schedule_ms": 6.177995,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.56425,
+          "schedule_ms": 6.31993,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.567083,
+          "schedule_ms": 6.340337,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.399292,
+          "schedule_ms": 6.214916,
+          "steps": 494,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 93.7753036437247,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 32,
+      "token_budget": 512,
+      "median_wall_ms": 7.187417,
+      "median_schedule_ms": 6.092707,
+      "steps": 162,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 71.4891975308642,
+      "samples": [
+        {
+          "wall_ms": 7.22825,
+          "schedule_ms": 6.1215,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.251208,
+          "schedule_ms": 6.138466,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.1965,
+          "schedule_ms": 6.092707,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.066583,
+          "schedule_ms": 5.994965,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.374333,
+          "schedule_ms": 6.294164,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.187417,
+          "schedule_ms": 6.096794,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.169333,
+          "schedule_ms": 6.080201,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.160417,
+          "schedule_ms": 6.061833,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.17625,
+          "schedule_ms": 6.08737,
+          "steps": 162,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 71.4891975308642,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    },
+    {
+      "max_num_seqs": 32,
+      "token_budget": 2048,
+      "median_wall_ms": 6.996375,
+      "median_schedule_ms": 5.924619,
+      "steps": 135,
+      "processed_token_positions": 59296,
+      "cached_prompt_tokens": 4064,
+      "budget_utilization_percent": 21.44675925925926,
+      "samples": [
+        {
+          "wall_ms": 7.145167,
+          "schedule_ms": 6.036871,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.996375,
+          "schedule_ms": 5.924619,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.95825,
+          "schedule_ms": 5.911498,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.970917,
+          "schedule_ms": 5.910707,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.941416,
+          "schedule_ms": 5.883168,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.969542,
+          "schedule_ms": 5.918665,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 6.998583,
+          "schedule_ms": 5.942374,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.028834,
+          "schedule_ms": 5.974581,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        },
+        {
+          "wall_ms": 7.019375,
+          "schedule_ms": 5.952041,
+          "steps": 135,
+          "processed_token_positions": 59296,
+          "budget_utilization_percent": 21.44675925925926,
+          "cached_prompt_tokens": 4064
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+# Installed and benchmarked using Python 3.12; earlier components use stdlib only.
+torch==2.14.1
+numpy==2.5.4

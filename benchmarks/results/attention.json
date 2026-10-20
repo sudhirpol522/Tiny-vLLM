@@ -1,0 +1,534 @@
+{
+  "timestamp_utc": "2026-10-20T21:54:06.216608+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "chip": "Chip: Apple M5",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "dtype": "float32",
+  "cpu_threads": 1,
+  "query_heads": 8,
+  "kv_heads": 2,
+  "head_dim": 64,
+  "block_size": 16,
+  "seed": 7,
+  "warmup_calls": 3,
+  "samples": 7,
+  "calls_per_sample": 5,
+  "tolerance": {
+    "atol": 3e-05,
+    "rtol": 3e-05
+  },
+  "timing_scope": "attention only, includes gather/head expansion/mask; excludes input construction, KV writes, validation",
+  "synchronization": "MPS synchronized before and after each timed 5-call sample",
+  "control": "same SDPA/mask/head expansion with K/V already contiguous; not a serving baseline",
+  "rows": [
+    {
+      "device": "cpu",
+      "workload": "decode-256",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "paged_median_ms": 0.0615168,
+      "dense_median_ms": 0.048175,
+      "samples_ms": {
+        "paged": [
+          0.06266659999999999,
+          0.0603334,
+          0.0598166,
+          0.0631168,
+          0.0615168,
+          0.062416799999999995,
+          0.06091680000000001
+        ],
+        "dense": [
+          0.0489,
+          0.04795,
+          0.0443834,
+          0.0487166,
+          0.048175,
+          0.048233399999999996,
+          0.04605
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 8.195638656616211e-08,
+        "dense": 8.195638656616211e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "workload": "decode-4096",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 4096
+        }
+      ],
+      "paged_median_ms": 0.8262499999999999,
+      "dense_median_ms": 0.6010500000000001,
+      "samples_ms": {
+        "paged": [
+          0.9359,
+          0.8327166,
+          0.7736834,
+          0.8252582,
+          0.754875,
+          0.8347334,
+          0.8262499999999999
+        ],
+        "dense": [
+          0.6128084,
+          0.7708999999999999,
+          0.6157084,
+          0.5684750000000001,
+          0.5901166,
+          0.6010500000000001,
+          0.5984666
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 7.82310962677002e-08,
+        "dense": 7.82310962677002e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "workload": "decode-8x1024",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        }
+      ],
+      "paged_median_ms": 1.5355166,
+      "dense_median_ms": 1.1423584,
+      "samples_ms": {
+        "paged": [
+          1.5514334,
+          1.5172582000000001,
+          1.6318916,
+          1.5355166,
+          1.484775,
+          1.5653166,
+          1.4913
+        ],
+        "dense": [
+          1.1500834,
+          1.1331832,
+          1.2039415999999998,
+          1.1241584,
+          1.2015334,
+          1.1288,
+          1.1423584
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 7.450580596923828e-08,
+        "dense": 7.450580596923828e-08
+      }
+    },
+    {
+      "device": "cpu",
+      "workload": "prefill-256",
+      "spec": [
+        {
+          "query_tokens": 256,
+          "kv_tokens": 256
+        }
+      ],
+      "paged_median_ms": 0.7765500000000001,
+      "dense_median_ms": 0.7588334,
+      "samples_ms": {
+        "paged": [
+          0.7765500000000001,
+          0.7769250000000001,
+          0.7738332,
+          0.7780084,
+          0.7767416,
+          0.7750916,
+          0.7763166
+        ],
+        "dense": [
+          0.7588334,
+          0.7601166,
+          0.7692666,
+          0.7564333999999999,
+          0.7548334,
+          0.7650165999999999,
+          0.7551166
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 7.152557373046875e-07,
+        "dense": 7.152557373046875e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "workload": "chunk-128-of-1024",
+      "spec": [
+        {
+          "query_tokens": 128,
+          "kv_tokens": 1024
+        }
+      ],
+      "paged_median_ms": 1.4392666,
+      "dense_median_ms": 1.4123416,
+      "samples_ms": {
+        "paged": [
+          1.4808334,
+          1.4669332000000002,
+          1.44085,
+          1.421325,
+          1.43835,
+          1.4392666,
+          1.431075
+        ],
+        "dense": [
+          1.4184918,
+          1.4228918,
+          1.3819333999999999,
+          1.4172084,
+          1.3907332000000001,
+          1.3788168,
+          1.4123416
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 2.682209014892578e-07,
+        "dense": 2.682209014892578e-07
+      }
+    },
+    {
+      "device": "cpu",
+      "workload": "mixed-3",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 64,
+          "kv_tokens": 64
+        },
+        {
+          "query_tokens": 32,
+          "kv_tokens": 512
+        }
+      ],
+      "paged_median_ms": 0.5353665999999999,
+      "dense_median_ms": 0.45380839999999995,
+      "samples_ms": {
+        "paged": [
+          0.5274166,
+          0.5402,
+          0.525725,
+          0.5306832,
+          0.5363165999999999,
+          0.5353665999999999,
+          0.53725
+        ],
+        "dense": [
+          0.4605418,
+          0.436975,
+          0.45380839999999995,
+          0.4523084,
+          0.45635820000000005,
+          0.454025,
+          0.4533918
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 8.344650268554688e-07,
+        "dense": 8.344650268554688e-07
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "decode-256",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "paged_median_ms": 0.3169166,
+      "dense_median_ms": 0.2185668,
+      "samples_ms": {
+        "paged": [
+          0.3253168,
+          0.3323584,
+          0.3205918,
+          0.3169166,
+          0.3078166,
+          0.27510819999999997,
+          0.2866832
+        ],
+        "dense": [
+          0.226125,
+          0.256675,
+          0.22374999999999998,
+          0.215725,
+          0.2185668,
+          0.212825,
+          0.1984834
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 5.960464477539063e-08,
+        "dense": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "decode-4096",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 4096
+        }
+      ],
+      "paged_median_ms": 0.7222999999999999,
+      "dense_median_ms": 0.5238082000000001,
+      "samples_ms": {
+        "paged": [
+          0.7212918,
+          0.7079334,
+          0.8147334,
+          0.7823,
+          0.7222999999999999,
+          0.7256582,
+          0.6987666
+        ],
+        "dense": [
+          0.5261334,
+          0.49837499999999996,
+          0.5238082000000001,
+          0.5116082,
+          0.5307666,
+          0.5242666,
+          0.5222
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 1.862645149230957e-08,
+        "dense": 1.862645149230957e-08
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "decode-8x1024",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        }
+      ],
+      "paged_median_ms": 1.5432418,
+      "dense_median_ms": 1.0215,
+      "samples_ms": {
+        "paged": [
+          1.5938082,
+          1.5801416,
+          1.6084418,
+          1.48645,
+          1.5266834,
+          1.5432418,
+          1.4836918000000001
+        ],
+        "dense": [
+          1.0511082,
+          0.9693084000000001,
+          1.007975,
+          1.0226916,
+          1.0382334,
+          1.0215,
+          0.9872083999999999
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 5.960464477539063e-08,
+        "dense": 5.960464477539063e-08
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "prefill-256",
+      "spec": [
+        {
+          "query_tokens": 256,
+          "kv_tokens": 256
+        }
+      ],
+      "paged_median_ms": 0.2504666,
+      "dense_median_ms": 0.2312834,
+      "samples_ms": {
+        "paged": [
+          0.7250333999999999,
+          0.5353665999999999,
+          0.20644179999999998,
+          0.251625,
+          0.2504666,
+          0.19613339999999999,
+          0.2230166
+        ],
+        "dense": [
+          0.5818,
+          0.6462334000000001,
+          0.27290000000000003,
+          0.2312834,
+          0.213,
+          0.2221666,
+          0.1896166
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 7.152557373046875e-07,
+        "dense": 7.152557373046875e-07
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "chunk-128-of-1024",
+      "spec": [
+        {
+          "query_tokens": 128,
+          "kv_tokens": 1024
+        }
+      ],
+      "paged_median_ms": 0.363425,
+      "dense_median_ms": 0.34245000000000003,
+      "samples_ms": {
+        "paged": [
+          0.3641584,
+          0.383975,
+          0.4378418,
+          0.3582416,
+          0.3541666,
+          0.363425,
+          0.3574666
+        ],
+        "dense": [
+          0.345375,
+          0.2976832,
+          0.34245000000000003,
+          0.3408834,
+          0.2913584,
+          0.34260820000000003,
+          0.3788416
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 3.5762786865234375e-07,
+        "dense": 3.5762786865234375e-07
+      }
+    },
+    {
+      "device": "mps",
+      "workload": "mixed-3",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 1024
+        },
+        {
+          "query_tokens": 64,
+          "kv_tokens": 64
+        },
+        {
+          "query_tokens": 32,
+          "kv_tokens": 512
+        }
+      ],
+      "paged_median_ms": 0.436675,
+      "dense_median_ms": 0.3194416,
+      "samples_ms": {
+        "paged": [
+          0.495175,
+          0.4250834,
+          0.44525819999999994,
+          0.4311332,
+          0.436675,
+          0.4320584,
+          0.485775
+        ],
+        "dense": [
+          0.31167500000000004,
+          0.32355839999999997,
+          0.3823,
+          0.3153666,
+          0.3194416,
+          0.3214168,
+          0.31855
+        ]
+      },
+      "max_abs_error_vs_float64_oracle": {
+        "paged": 7.152557373046875e-07,
+        "dense": 7.152557373046875e-07
+      }
+    }
+  ]
+}

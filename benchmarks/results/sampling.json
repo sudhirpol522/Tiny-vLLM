@@ -1,0 +1,214 @@
+{
+  "timestamp_utc": "2026-10-20T22:04:51.342991+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "cpu_threads": 1,
+  "dtype": "float32",
+  "samples": 7,
+  "synchronization": "MPS synchronized before and after each sample",
+  "vocab_size": 32768,
+  "logit_seed": 37,
+  "warmup_calls": 3,
+  "calls_per_sample": 5,
+  "filtered": "temperature 0.7, top-k 50, top-p 0.9; every fourth row greedy",
+  "timing_scope": "upstream sample() including filtering, RNG and returned Python token IDs",
+  "rows": [
+    {
+      "workload": "greedy-1",
+      "device": "cpu",
+      "batch": 1,
+      "mode": "greedy",
+      "median_ms": 0.016025,
+      "samples_ms": [
+        0.0158416,
+        0.0160834,
+        0.016041800000000002,
+        0.016,
+        0.016025,
+        0.016375,
+        0.0157834
+      ]
+    },
+    {
+      "workload": "greedy-1",
+      "device": "mps",
+      "batch": 1,
+      "mode": "greedy",
+      "median_ms": 0.5388834,
+      "samples_ms": [
+        0.4723668,
+        0.6023084,
+        0.5380081999999999,
+        0.5831666,
+        0.59575,
+        0.5388834,
+        0.5313582
+      ]
+    },
+    {
+      "workload": "filtered-1",
+      "device": "cpu",
+      "batch": 1,
+      "mode": "filtered",
+      "median_ms": 1.6603334,
+      "samples_ms": [
+        1.7144,
+        1.6985334,
+        1.6603334,
+        1.6879833999999998,
+        1.6455084,
+        1.6373918,
+        1.6149999999999998
+      ]
+    },
+    {
+      "workload": "filtered-1",
+      "device": "mps",
+      "batch": 1,
+      "mode": "filtered",
+      "median_ms": 1.4977334,
+      "samples_ms": [
+        3.2313249999999996,
+        2.147825,
+        1.4977334,
+        1.774775,
+        1.160875,
+        1.088725,
+        1.120525
+      ]
+    },
+    {
+      "workload": "greedy-8",
+      "device": "cpu",
+      "batch": 8,
+      "mode": "greedy",
+      "median_ms": 0.11941679999999999,
+      "samples_ms": [
+        0.11973339999999999,
+        0.11978340000000001,
+        0.1193918,
+        0.1193584,
+        0.11939999999999999,
+        0.11941679999999999,
+        0.12029160000000001
+      ]
+    },
+    {
+      "workload": "greedy-8",
+      "device": "mps",
+      "batch": 8,
+      "mode": "greedy",
+      "median_ms": 0.198675,
+      "samples_ms": [
+        0.1814584,
+        0.19458340000000002,
+        0.19000840000000002,
+        0.20366659999999998,
+        0.2079168,
+        0.198675,
+        0.20325000000000001
+      ]
+    },
+    {
+      "workload": "filtered-8",
+      "device": "cpu",
+      "batch": 8,
+      "mode": "filtered",
+      "median_ms": 13.5561,
+      "samples_ms": [
+        13.5220668,
+        13.5591416,
+        13.5561,
+        13.5117332,
+        13.5110834,
+        13.5628834,
+        13.635566800000001
+      ]
+    },
+    {
+      "workload": "filtered-8",
+      "device": "mps",
+      "batch": 8,
+      "mode": "filtered",
+      "median_ms": 1.9197165999999999,
+      "samples_ms": [
+        3.93645,
+        2.1794415999999996,
+        2.1230918,
+        1.9197165999999999,
+        1.6049082,
+        1.5754,
+        1.632825
+      ]
+    },
+    {
+      "workload": "greedy-32",
+      "device": "cpu",
+      "batch": 32,
+      "mode": "greedy",
+      "median_ms": 0.4891082,
+      "samples_ms": [
+        0.48525840000000003,
+        0.4933084,
+        0.4891082,
+        0.5008918,
+        0.47532500000000005,
+        0.481125,
+        0.4907166
+      ]
+    },
+    {
+      "workload": "greedy-32",
+      "device": "mps",
+      "batch": 32,
+      "mode": "greedy",
+      "median_ms": 0.3977832,
+      "samples_ms": [
+        0.507775,
+        0.43513339999999995,
+        0.3977832,
+        0.359975,
+        0.4338,
+        0.3110666,
+        0.2343166
+      ]
+    },
+    {
+      "workload": "filtered-32",
+      "device": "cpu",
+      "batch": 32,
+      "mode": "filtered",
+      "median_ms": 54.048816599999995,
+      "samples_ms": [
+        54.245225000000005,
+        54.1997416,
+        53.9554166,
+        54.1303,
+        53.910275,
+        54.048816599999995,
+        53.918941800000006
+      ]
+    },
+    {
+      "workload": "filtered-32",
+      "device": "mps",
+      "batch": 32,
+      "mode": "filtered",
+      "median_ms": 3.3409166,
+      "samples_ms": [
+        4.774983199999999,
+        4.2225334,
+        3.4326666,
+        3.3409166,
+        3.2379165999999997,
+        3.1463,
+        3.2335915999999996
+      ]
+    }
+  ]
+}

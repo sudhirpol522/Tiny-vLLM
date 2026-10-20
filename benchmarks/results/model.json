@@ -1,0 +1,406 @@
+{
+  "timestamp_utc": "2026-10-20T21:58:43.859514+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "chip": "Chip: Apple M5",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "config": {
+    "model_type": "qwen3",
+    "vocab_size": 1024,
+    "hidden_size": 256,
+    "intermediate_size": 768,
+    "num_hidden_layers": 4,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 2,
+    "head_dim": 32,
+    "rms_norm_eps": 1e-06,
+    "rope_theta": 1000000.0,
+    "tie_word_embeddings": false,
+    "attention_bias": false
+  },
+  "parameters": 3541504,
+  "weights": "random CPU initialization, seed 17; no checkpoint",
+  "page_seed": 19,
+  "max_position": 512,
+  "block_size": 16,
+  "dtype": "float32",
+  "cpu_threads": 1,
+  "warmup_calls": 3,
+  "samples": 7,
+  "calls_per_sample": 5,
+  "timing_scope": "embeddings, all decoder layers, cache writes, reference attention, final norm, all query-position logits",
+  "excluded": "model/input construction, full-context priming, correctness checks, sampling, scheduler",
+  "replay": "same query tokens, positions and context each call; query slots overwritten; no growing generation",
+  "synchronization": "MPS synchronized before and after each timed 5-call sample",
+  "device_order": "CPU then MPS per workload; no randomized device ordering",
+  "tolerance": {
+    "atol": 3e-05,
+    "rtol": 3e-05
+  },
+  "rows": [
+    {
+      "workload": "prefill-32",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 32,
+          "kv_tokens": 32
+        }
+      ],
+      "median_ms": 0.9721831999999999,
+      "samples_ms": [
+        0.9512333999999999,
+        0.9897,
+        0.9429084,
+        0.9721831999999999,
+        0.986275,
+        0.953425,
+        0.9869832000000001
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 0.0,
+        "vs_cpu_full_prefill": 0.0
+      }
+    },
+    {
+      "workload": "prefill-32",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 32,
+          "kv_tokens": 32
+        }
+      ],
+      "median_ms": 2.1592,
+      "samples_ms": [
+        2.8820416,
+        2.1592,
+        2.1873084,
+        2.11705,
+        2.1507,
+        2.09385,
+        2.280425
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 0.0,
+        "vs_cpu_full_prefill": 1.0132789611816406e-06
+      }
+    },
+    {
+      "workload": "prefill-128",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 128,
+          "kv_tokens": 128
+        }
+      ],
+      "median_ms": 2.6016584000000003,
+      "samples_ms": [
+        2.629625,
+        2.6141084,
+        2.5351416,
+        2.614575,
+        2.6016584000000003,
+        2.5977832,
+        2.5611834
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 0.0,
+        "vs_cpu_full_prefill": 0.0
+      }
+    },
+    {
+      "workload": "prefill-128",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 128,
+          "kv_tokens": 128
+        }
+      ],
+      "median_ms": 1.2602084,
+      "samples_ms": [
+        1.2950832,
+        1.2694084,
+        1.25835,
+        1.2593082,
+        1.265975,
+        1.2602084,
+        1.2497832
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 0.0,
+        "vs_cpu_full_prefill": 1.1324882507324219e-06
+      }
+    },
+    {
+      "workload": "decode-256",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 0.5644668,
+      "samples_ms": [
+        0.5624334,
+        0.5650666,
+        0.5611834,
+        0.5620916,
+        0.5693582,
+        0.5688,
+        0.5644668
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 1.0728836059570312e-06,
+        "vs_cpu_full_prefill": 1.0728836059570312e-06
+      }
+    },
+    {
+      "workload": "decode-256",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 1.0942,
+      "samples_ms": [
+        2.2508918,
+        0.959475,
+        0.9994584,
+        0.9305916,
+        1.0942,
+        2.1435082000000003,
+        1.1774499999999999
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 1.3113021850585938e-06,
+        "vs_cpu_full_prefill": 1.1920928955078125e-06
+      }
+    },
+    {
+      "workload": "decode-8x256",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 2.261025,
+      "samples_ms": [
+        2.289975,
+        2.261025,
+        2.2686666,
+        2.2608084,
+        2.2601584,
+        2.2463666,
+        2.3942334
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 8.940696716308594e-07,
+        "vs_cpu_full_prefill": 8.940696716308594e-07
+      }
+    },
+    {
+      "workload": "decode-8x256",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        },
+        {
+          "query_tokens": 1,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 3.0401666,
+      "samples_ms": [
+        3.0955832,
+        3.0899,
+        3.025375,
+        3.0401666,
+        3.0120584,
+        3.0827915999999997,
+        2.9795667999999997
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 1.5497207641601562e-06,
+        "vs_cpu_full_prefill": 1.6689300537109375e-06
+      }
+    },
+    {
+      "workload": "chunk-32-of-256",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 32,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 1.1786581999999999,
+      "samples_ms": [
+        1.195875,
+        1.1794499999999999,
+        1.1786581999999999,
+        1.171325,
+        1.1807083999999999,
+        1.1770416000000001,
+        1.1782666000000002
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 0.0,
+        "vs_cpu_full_prefill": 0.0
+      }
+    },
+    {
+      "workload": "chunk-32-of-256",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 32,
+          "kv_tokens": 256
+        }
+      ],
+      "median_ms": 1.37005,
+      "samples_ms": [
+        1.3635834,
+        1.37005,
+        1.3750166,
+        1.350325,
+        1.3762333999999998,
+        1.364775,
+        1.4133168
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 9.5367431640625e-07,
+        "vs_cpu_full_prefill": 1.1920928955078125e-06
+      }
+    },
+    {
+      "workload": "mixed-3",
+      "device": "cpu",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 128
+        },
+        {
+          "query_tokens": 32,
+          "kv_tokens": 32
+        },
+        {
+          "query_tokens": 16,
+          "kv_tokens": 96
+        }
+      ],
+      "median_ms": 1.5056668,
+      "samples_ms": [
+        1.3670166,
+        1.4602834,
+        1.5103415999999998,
+        1.494375,
+        1.6926165999999998,
+        1.5192168000000001,
+        1.5056668
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 7.152557373046875e-07,
+        "vs_cpu_full_prefill": 7.152557373046875e-07
+      }
+    },
+    {
+      "workload": "mixed-3",
+      "device": "mps",
+      "spec": [
+        {
+          "query_tokens": 1,
+          "kv_tokens": 128
+        },
+        {
+          "query_tokens": 32,
+          "kv_tokens": 32
+        },
+        {
+          "query_tokens": 16,
+          "kv_tokens": 96
+        }
+      ],
+      "median_ms": 1.53745,
+      "samples_ms": [
+        1.4859415999999999,
+        1.483525,
+        1.53745,
+        1.5395084,
+        1.5803331999999999,
+        1.5347,
+        1.6332584
+      ],
+      "max_abs_error": {
+        "vs_full_prefill": 9.5367431640625e-07,
+        "vs_cpu_full_prefill": 1.0728836059570312e-06
+      }
+    }
+  ]
+}
