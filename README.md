@@ -85,5 +85,3 @@ python -m benchmarks.charts
 [Sampling](benchmarks/results/sampling.png) ·
 [Offline generation](benchmarks/results/generation.png)
 
-Implementation extracted and adapted from [tinyserve](https://github.com/priyammaz/tinyserve).
-[Implementation notes](UPSTREAM.md).
