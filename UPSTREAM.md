@@ -102,6 +102,15 @@ fixture now includes a minimal test-only chat template. Socket tests verify
 early streaming and abort/release on client disconnect on CPU and MPS. The
 loopback HTTP benchmark and Matplotlib chart are local validation additions.
 
+The optional MLX backend is a new local port of the existing decoder equations
+and paged-cache semantics. `mlx_model.py` uses MLX-native projections, RMSNorm,
+RoPE, GQA, and functional cache updates. Decode compilation uses explicit state
+inputs/outputs and page-count buckets; it is not copied from upstream's CUDA
+graph path. `mlx_runner.py` integrates the existing scheduler and ownership
+manager, with native MLX sampling. Checkpoint import uses the existing validated
+CPU loader. Tests, benchmarks, precision diagnostics, and MLX documentation are
+local additions. The original PyTorch model definitions remain unchanged.
+
 No license file was present in the upstream root listing when inspected. No
 license is granted here for the upstream code. Reuse/distribution permission
 needs to be established before publishing the copied source.

@@ -6,10 +6,11 @@ from safetensors.torch import save_file
 from transformers import Qwen3Config, Qwen3ForCausalLM
 
 
-def checkpoint_fixture(path, sharded=False, tied=False):
-    cfg = Qwen3Config(vocab_size=97, hidden_size=64, intermediate_size=128,
+def checkpoint_fixture(path, sharded=False, tied=False, config=None):
+    cfg = config or Qwen3Config(vocab_size=97, hidden_size=64, intermediate_size=128,
                       num_hidden_layers=2, num_attention_heads=4,
                       num_key_value_heads=2, head_dim=16, tie_word_embeddings=tied)
+    tied = cfg.tie_word_embeddings
     cfg._attn_implementation = 'eager'
     with torch.random.fork_rng(devices=[]):
         torch.manual_seed(23)

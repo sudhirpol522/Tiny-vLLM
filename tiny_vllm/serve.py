@@ -16,6 +16,8 @@ def main():
     source.add_argument('--model', help='Local checkpoint directory or Hugging Face model ID')
     source.add_argument('--demo', action='store_true', help='Use a local random-weight fixture')
     ap.add_argument('--device', choices=['cpu', 'mps'], default='cpu')
+    ap.add_argument('--backend', choices=['torch', 'mlx'], default='torch')
+    ap.add_argument('--compile-decode', action='store_true')
     ap.add_argument('--host', default='127.0.0.1')
     ap.add_argument('--port', type=int, default=8000)
     ap.add_argument('--max-model-len', type=int, default=512)
@@ -28,6 +30,7 @@ def main():
             from benchmarks.generation_inputs import generation_fixture
             generation_fixture(folder)
         cfg = EngineConfig(model=folder if args.demo else args.model, device=args.device,
+                           backend=args.backend, compile_decode=args.compile_decode,
                            max_model_len=args.max_model_len, num_blocks=args.num_blocks,
                            max_num_seqs=args.max_num_seqs,
                            max_num_batched_tokens=args.max_num_batched_tokens)

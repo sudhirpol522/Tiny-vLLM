@@ -1,0 +1,514 @@
+{
+  "timestamp_utc": "2026-10-20T23:09:09.989976+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "mlx": "0.32.4",
+  "parameters": 3541504,
+  "vocab_size": 1024,
+  "weights": "random, no pretrained checkpoint",
+  "dtype": "float32",
+  "mlx_enable_tf32": "0",
+  "cpu_threads": 1,
+  "samples": 7,
+  "fixed_calls_per_sample": 10,
+  "fixed_scope": "fixed-shape forward plus cache writes and logits; input prep excluded; first call separate",
+  "generation_scope": "scheduler, input packing, model, greedy sampling, detokenization; loading excluded",
+  "generation_outputs_per_request": 32,
+  "cache": "prefix metadata reset for each generation run",
+  "order": "mode order rotated each trial; all GPU work completed before/after timing",
+  "compilation": "decode only; explicit cache inputs/outputs; power-of-two page-count buckets; max 16 cached variants",
+  "fixed_rows": [
+    {
+      "workload": "decode-128",
+      "mode": "pytorch_mps",
+      "median_ms": 0.9996375000000001,
+      "min_ms": 0.9500458,
+      "max_ms": 1.5792249999999999,
+      "samples_ms": [
+        1.5792249999999999,
+        0.9500458,
+        0.9806959000000001,
+        0.9914833,
+        0.9996375000000001,
+        1.0046291999999999,
+        1.0217041999999998
+      ],
+      "first_call_ms": 334.676041,
+      "max_abs_error": 3.5762786865234375e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-128",
+      "mode": "mlx_eager",
+      "median_ms": 0.7797834,
+      "min_ms": 0.7546,
+      "max_ms": 0.8316667000000001,
+      "samples_ms": [
+        0.8316667000000001,
+        0.8235875,
+        0.7797834,
+        0.7881458,
+        0.7594458000000001,
+        0.7546,
+        0.7629334
+      ],
+      "first_call_ms": 45.631667,
+      "max_abs_error": 3.2782554626464844e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-128",
+      "mode": "mlx_compiled",
+      "median_ms": 0.5894584,
+      "min_ms": 0.5541666000000001,
+      "max_ms": 0.638525,
+      "samples_ms": [
+        0.638525,
+        0.5634333,
+        0.6358708,
+        0.5894584,
+        0.5906583999999999,
+        0.5747083,
+        0.5541666000000001
+      ],
+      "first_call_ms": 213.524083,
+      "max_abs_error": 3.2782554626464844e-07,
+      "compiled_used": true,
+      "compiled_variants": 1
+    },
+    {
+      "workload": "decode-512",
+      "mode": "pytorch_mps",
+      "median_ms": 1.2112584,
+      "min_ms": 1.1171125,
+      "max_ms": 1.5231583,
+      "samples_ms": [
+        1.1672084,
+        1.1171125,
+        1.1265583,
+        1.3254042,
+        1.2112584,
+        1.4765542,
+        1.5231583
+      ],
+      "first_call_ms": 6.365958,
+      "max_abs_error": 2.384185791015625e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-512",
+      "mode": "mlx_eager",
+      "median_ms": 0.7939583,
+      "min_ms": 0.7703458000000001,
+      "max_ms": 0.9701833000000001,
+      "samples_ms": [
+        0.7939583,
+        0.7703458000000001,
+        0.8673333,
+        0.77645,
+        0.7776375,
+        0.9701833000000001,
+        0.8438917
+      ],
+      "first_call_ms": 1.09225,
+      "max_abs_error": 2.980232238769531e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-512",
+      "mode": "mlx_compiled",
+      "median_ms": 0.7595084,
+      "min_ms": 0.7061666,
+      "max_ms": 1.6587042,
+      "samples_ms": [
+        0.7107916000000001,
+        0.7061666,
+        0.7321,
+        0.7775375,
+        0.7595084,
+        1.6587042,
+        0.9187792
+      ],
+      "first_call_ms": 1.394833,
+      "max_abs_error": 2.980232238769531e-07,
+      "compiled_used": true,
+      "compiled_variants": 1
+    },
+    {
+      "workload": "decode-8x128",
+      "mode": "pytorch_mps",
+      "median_ms": 2.9501834,
+      "min_ms": 2.9004833000000003,
+      "max_ms": 4.7256459,
+      "samples_ms": [
+        4.7256459,
+        3.4740834,
+        2.9835709,
+        2.9315625,
+        2.9501834,
+        2.9004833000000003,
+        2.9422791
+      ],
+      "first_call_ms": 7.380458,
+      "max_abs_error": 1.1920928955078125e-06,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-8x128",
+      "mode": "mlx_eager",
+      "median_ms": 2.1543958,
+      "min_ms": 2.0902125000000003,
+      "max_ms": 2.67875,
+      "samples_ms": [
+        2.67875,
+        2.6541666,
+        2.2068167,
+        2.1543958,
+        2.0902125000000003,
+        2.1281917,
+        2.1409
+      ],
+      "first_call_ms": 8.697083,
+      "max_abs_error": 9.5367431640625e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-8x128",
+      "mode": "mlx_compiled",
+      "median_ms": 1.5368166,
+      "min_ms": 1.4749375,
+      "max_ms": 1.7523917,
+      "samples_ms": [
+        1.736,
+        1.7523917,
+        1.6647791,
+        1.5235791,
+        1.5214666,
+        1.4749375,
+        1.5368166
+      ],
+      "first_call_ms": 4.628083,
+      "max_abs_error": 9.5367431640625e-07,
+      "compiled_used": true,
+      "compiled_variants": 1
+    },
+    {
+      "workload": "decode-8x512",
+      "mode": "pytorch_mps",
+      "median_ms": 2.9962042,
+      "min_ms": 2.9529625,
+      "max_ms": 3.7478124999999998,
+      "samples_ms": [
+        3.7478124999999998,
+        3.5332749999999997,
+        3.2284416,
+        2.9737958,
+        2.9962042,
+        2.9611042000000003,
+        2.9529625
+      ],
+      "first_call_ms": 4.781583,
+      "max_abs_error": 1.3113021850585938e-06,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-8x512",
+      "mode": "mlx_eager",
+      "median_ms": 2.1357208,
+      "min_ms": 2.0995208,
+      "max_ms": 2.21845,
+      "samples_ms": [
+        2.21845,
+        2.1357208,
+        2.176875,
+        2.1457417,
+        2.1235209,
+        2.1248375,
+        2.0995208
+      ],
+      "first_call_ms": 2.566333,
+      "max_abs_error": 8.344650268554688e-07,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "decode-8x512",
+      "mode": "mlx_compiled",
+      "median_ms": 1.4690125,
+      "min_ms": 1.4373417,
+      "max_ms": 1.562525,
+      "samples_ms": [
+        1.562525,
+        1.5539084,
+        1.5283625,
+        1.4674458,
+        1.4373417,
+        1.4690125,
+        1.437575
+      ],
+      "first_call_ms": 3.845667,
+      "max_abs_error": 8.344650268554688e-07,
+      "compiled_used": true,
+      "compiled_variants": 1
+    },
+    {
+      "workload": "prefill-128",
+      "mode": "pytorch_mps",
+      "median_ms": 1.1097833,
+      "min_ms": 1.0985792,
+      "max_ms": 1.2024958,
+      "samples_ms": [
+        1.2024958,
+        1.1263459,
+        1.1097833,
+        1.1003542,
+        1.115475,
+        1.0985792,
+        1.1045208
+      ],
+      "first_call_ms": 8.871125,
+      "max_abs_error": 1.1324882507324219e-06,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "prefill-128",
+      "mode": "mlx_eager",
+      "median_ms": 1.1330042,
+      "min_ms": 1.1125500000000001,
+      "max_ms": 1.2879583000000001,
+      "samples_ms": [
+        1.2879583000000001,
+        1.2386042,
+        1.1279708,
+        1.1330042,
+        1.1379833,
+        1.1125500000000001,
+        1.1181666
+      ],
+      "first_call_ms": 85.593042,
+      "max_abs_error": 1.1920928955078125e-06,
+      "compiled_used": false,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "prefill-128",
+      "mode": "mlx_compiled",
+      "median_ms": 1.1293,
+      "min_ms": 1.1203083,
+      "max_ms": 1.2541417,
+      "samples_ms": [
+        1.2541417,
+        1.1596083,
+        1.1293,
+        1.1834041,
+        1.1267166,
+        1.1270625,
+        1.1203083
+      ],
+      "first_call_ms": 1.381208,
+      "max_abs_error": 1.1920928955078125e-06,
+      "compiled_used": false,
+      "compiled_variants": 0
+    }
+  ],
+  "generation_rows": [
+    {
+      "workload": "single-32",
+      "mode": "pytorch_mps",
+      "median_ms": 95.453708,
+      "min_ms": 92.982583,
+      "max_ms": 97.343542,
+      "samples_ms": [
+        92.982583,
+        97.343542,
+        95.951417,
+        95.990708,
+        95.453708,
+        94.5895,
+        93.933291
+      ],
+      "first_run_ms": 220.96025,
+      "output_tokens": 32,
+      "output_tokens_per_second": 335.24103641945476,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "single-32",
+      "mode": "mlx_eager",
+      "median_ms": 31.305167,
+      "min_ms": 30.22625,
+      "max_ms": 32.3385,
+      "samples_ms": [
+        30.22625,
+        31.642792,
+        31.02525,
+        32.3385,
+        31.391333,
+        30.82325,
+        31.305167
+      ],
+      "first_run_ms": 71.454958,
+      "output_tokens": 32,
+      "output_tokens_per_second": 1022.1954733542868,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "single-32",
+      "mode": "mlx_compiled",
+      "median_ms": 23.634833,
+      "min_ms": 22.735667,
+      "max_ms": 24.118625,
+      "samples_ms": [
+        23.104792,
+        23.676792,
+        24.118625,
+        23.360834,
+        23.634833,
+        23.94725,
+        22.735667
+      ],
+      "first_run_ms": 23.232958,
+      "output_tokens": 32,
+      "output_tokens_per_second": 1353.9338314766176,
+      "token_identical": true,
+      "compiled_variants": 1
+    },
+    {
+      "workload": "mixed-8",
+      "mode": "pytorch_mps",
+      "median_ms": 249.272041,
+      "min_ms": 171.038833,
+      "max_ms": 330.403125,
+      "samples_ms": [
+        194.0365,
+        171.038833,
+        176.236292,
+        272.825417,
+        249.272041,
+        288.503625,
+        330.403125
+      ],
+      "first_run_ms": 1399.384709,
+      "output_tokens": 256,
+      "output_tokens_per_second": 1026.9904276990294,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "mixed-8",
+      "mode": "mlx_eager",
+      "median_ms": 87.999166,
+      "min_ms": 82.503958,
+      "max_ms": 137.135583,
+      "samples_ms": [
+        82.932959,
+        82.503958,
+        86.802875,
+        130.04575,
+        94.210833,
+        137.135583,
+        87.999166
+      ],
+      "first_run_ms": 192.8255,
+      "output_tokens": 256,
+      "output_tokens_per_second": 2909.118479600136,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "mixed-8",
+      "mode": "mlx_compiled",
+      "median_ms": 69.779709,
+      "min_ms": 64.459959,
+      "max_ms": 105.207,
+      "samples_ms": [
+        67.23575,
+        64.459959,
+        65.00525,
+        73.036584,
+        79.808875,
+        105.207,
+        69.779709
+      ],
+      "first_run_ms": 91.646541,
+      "output_tokens": 256,
+      "output_tokens_per_second": 3668.688271543236,
+      "token_identical": true,
+      "compiled_variants": 7
+    },
+    {
+      "workload": "shared-8",
+      "mode": "pytorch_mps",
+      "median_ms": 178.996167,
+      "min_ms": 153.934708,
+      "max_ms": 216.937083,
+      "samples_ms": [
+        163.853708,
+        198.416208,
+        178.996167,
+        153.934708,
+        161.923791,
+        203.843042,
+        216.937083
+      ],
+      "first_run_ms": 278.266917,
+      "output_tokens": 256,
+      "output_tokens_per_second": 1430.1982231831812,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "shared-8",
+      "mode": "mlx_eager",
+      "median_ms": 78.925167,
+      "min_ms": 76.443292,
+      "max_ms": 91.72775,
+      "samples_ms": [
+        78.925167,
+        91.72775,
+        76.443292,
+        77.81025,
+        78.075875,
+        79.529208,
+        85.294167
+      ],
+      "first_run_ms": 82.832666,
+      "output_tokens": 256,
+      "output_tokens_per_second": 3243.578819415105,
+      "token_identical": true,
+      "compiled_variants": 0
+    },
+    {
+      "workload": "shared-8",
+      "mode": "mlx_compiled",
+      "median_ms": 62.092542,
+      "min_ms": 58.221,
+      "max_ms": 90.506125,
+      "samples_ms": [
+        59.92825,
+        63.234959,
+        90.506125,
+        59.132708,
+        58.221,
+        65.579584,
+        62.092542
+      ],
+      "first_run_ms": 113.529208,
+      "output_tokens": 256,
+      "output_tokens_per_second": 4122.878396571363,
+      "token_identical": true,
+      "compiled_variants": 2
+    }
+  ]
+}

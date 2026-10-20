@@ -127,7 +127,11 @@ class Engine:
         self.stop_ids.discard(None)
 
         # Set up the runner
-        self.runner = ModelRunner(cfg)
+        if cfg.backend == 'mlx':
+            from tiny_vllm.mlx_runner import MLXRunner
+            self.runner = MLXRunner(cfg)
+        else:
+            self.runner = ModelRunner(cfg)
         num_blocks = self.runner.allocate_kv_cache()
         # Set up the kv cache and scheduler
         self.kv = KVCacheManager(num_blocks, cfg.block_size, cfg.enable_prefix_caching)

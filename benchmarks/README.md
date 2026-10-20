@@ -15,6 +15,7 @@ before and after the timed calls. Case order and raw samples are recorded in JSO
 | Sampling | 32,768-logit vocabulary, batches of 1/8/32; 3 warmups; 7 samples of 5 calls | [JSON](results/sampling.json) |
 | Generation | 86,528 random parameters; vocabulary 97; 16 output tokens/request; 1 warmup, 7 runs | [JSON](results/generation.json) |
 | HTTP/SSE | Loopback TCP; 1/4 concurrent clients; warm prefix cache; 16 outputs/request; 7 runs | [JSON](results/http.json) |
+| MLX | 3.54M random parameters; PyTorch MPS vs eager/compiled MLX; fixed forward and generation; 7 runs | [JSON](results/mlx.json) |
 
 The attention control uses already-contiguous K/V with the same SDPA operation;
 it is not a serving baseline. Model calls include cache writes and logits for all
@@ -77,6 +78,16 @@ python -m benchmarks.generation --devices cpu mps
 python -m benchmarks.http --devices cpu mps
 python -m benchmarks.charts
 ```
+
+With optional MLX dependencies installed:
+
+```bash
+MLX_ENABLE_TF32=0 python -m benchmarks.mlx
+python -m benchmarks.mlx_precision
+```
+
+The MLX runs separate first-call costs from steady-state timings and disable
+reduced-precision float32 math in both MLX modes. [MLX methodology and findings](../docs/MLX.md).
 
 Use `--devices cpu` without Apple GPU access. The chart command redraws saved
 measurements with Matplotlib; it does not rerun benchmarks. New benchmark runs

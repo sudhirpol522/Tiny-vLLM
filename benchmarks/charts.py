@@ -141,6 +141,17 @@ def plot_http(rows, path):
            xlabel='Milliseconds for all concurrent requests (median)', legend_loc='upper right')
 
 
+def plot_mlx(data, path):
+    rows = data['generation_rows']
+    names = list(dict.fromkeys(row['workload'] for row in rows))
+    modes = [('pytorch_mps', 'PyTorch MPS'), ('mlx_eager', 'MLX eager'), ('mlx_compiled', 'MLX compiled decode')]
+    paired(rows, names, [(label, [next(r['median_ms'] for r in rows if r['workload'] == name and r['mode'] == mode)
+                                  for name in names]) for mode, label in modes],
+           'Apple GPU generation · 3.54M random parameters', path,
+           'Float32 · MLX TF32 disabled · 32 outputs/request · loading and first-run compilation excluded',
+           xlabel='Milliseconds per generation workload (median)', legend_loc='lower right')
+
+
 def main():
     output = Path('benchmarks/results')
     for name, render in [('kv_cache', plot_kv), ('scheduler', plot_scheduler), ('model', plot_model),
@@ -157,6 +168,9 @@ def main():
     file = output / 'generation.json'
     if file.exists():
         plot_generation_throughput(json.loads(file.read_text())['rows'], output / 'throughput.png')
+    file = output / 'mlx.json'
+    if file.exists():
+        plot_mlx(json.loads(file.read_text()), output / 'mlx.png')
     print('Matplotlib charts saved in benchmarks/results')
 
 

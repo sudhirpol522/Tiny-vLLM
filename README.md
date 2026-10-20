@@ -12,10 +12,11 @@ It includes:
 - **PyTorch reference attention** — grouped-query attention over paged K/V storage.
 - **Checkpoint loading and sampling** — safetensors, greedy decoding, temperature, top-k, and top-p.
 - **OpenAI-compatible HTTP endpoints** — completions, chat completions, and SSE streaming.
+- **Optional MLX backend** — eager execution or compiled decode on Apple GPUs.
 
 FlashAttention and CUDA graphs are not implemented in this Mac version.
 Validation currently covers small Qwen3 configurations with random weights.
-**83 tests pass**, including Hugging Face parity and CPU/MPS streaming checks.
+**96 tests pass**, including Hugging Face parity, CPU/MPS streaming, and MLX compilation checks.
 
 ## Install
 
@@ -26,6 +27,16 @@ python3.12 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+For the optional Apple GPU backend:
+
+```bash
+pip install -r requirements-mlx.txt
+MLX_ENABLE_TF32=0 python -m examples.generate --backend mlx --device mps --compile-decode
+```
+
+Compiled decode reduced generation latency by **20.7–24.5% versus eager MLX**
+on the local 3.54M-parameter fixture. [MLX setup, results, and limits](docs/MLX.md).
 
 ## Usage
 

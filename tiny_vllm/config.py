@@ -16,8 +16,16 @@ class EngineConfig:
     num_blocks: int = 129  # Includes reserved null page 0.
     enable_prefix_caching: bool = True
     seed: int = 0
+    backend: str = 'torch'
+    compile_decode: bool = False
 
     def __post_init__(self):
+        if self.backend not in {'torch', 'mlx'}:
+            raise ValueError('Choose torch or mlx backend')
+        if self.backend == 'mlx' and self.device != 'mps':
+            raise ValueError('Use device=mps for the MLX Apple GPU backend')
+        if self.compile_decode and self.backend != 'mlx':
+            raise ValueError('compile_decode requires the MLX backend')
         if self.device not in {'cpu', 'mps'}:
             raise ValueError('Choose cpu or mps')
         for name in ('max_model_len', 'block_size', 'max_num_seqs',

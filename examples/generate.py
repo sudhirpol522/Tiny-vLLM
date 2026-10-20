@@ -12,6 +12,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--model', help='Local directory or Hugging Face model ID')
     ap.add_argument('--device', choices=['cpu', 'mps'], default='cpu')
+    ap.add_argument('--backend', choices=['torch', 'mlx'], default='torch')
+    ap.add_argument('--compile-decode', action='store_true')
     ap.add_argument('--prompt')
     ap.add_argument('--max-tokens', type=int, default=16)
     args = ap.parse_args()
@@ -19,7 +21,8 @@ def main():
         if args.model is None:
             generation_fixture(folder)
             print('Using random weights and a synthetic token vocabulary.')
-        engine = Engine(EngineConfig(model=args.model or folder, device=args.device))
+        engine = Engine(EngineConfig(model=args.model or folder, device=args.device,
+                                     backend=args.backend, compile_decode=args.compile_decode))
         prompt = args.prompt or ('The capital of France is' if args.model else 't4 t5 t6')
         result = engine.generate([prompt], SamplingParams(temperature=0, max_tokens=args.max_tokens))[0]
         print('Prompt:', prompt)

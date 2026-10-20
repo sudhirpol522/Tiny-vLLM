@@ -1,0 +1,3 @@
+# Optional Apple Silicon execution backend.
+-r requirements.txt
+mlx==0.32.4
