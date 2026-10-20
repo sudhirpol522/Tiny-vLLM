@@ -1,0 +1,946 @@
+{
+  "timestamp_utc": "2026-10-20T22:20:17.975131+00:00",
+  "python": "3.12.13",
+  "torch": "2.14.1",
+  "os": "macOS-26.6.2-arm64-arm-64bit",
+  "devices": [
+    "cpu",
+    "mps"
+  ],
+  "cpu_threads": 1,
+  "dtype": "float32",
+  "parameters": 86528,
+  "vocab_size": 97,
+  "checkpoint": "local random-weight Qwen3 fixture, seed 23",
+  "prompt_tokens": 16,
+  "output_tokens_per_request": 16,
+  "samples": 7,
+  "warmup_runs_per_mode": 1,
+  "cache": "warm prefix cache, repeated identical prompt; metadata not reset",
+  "timing_scope": "loopback TCP, HTTP, queueing, generation, serialization, and client parsing",
+  "excluded": "server startup, checkpoint loading, warmup and connection-pool creation",
+  "first_event": "time from client call to first SSE data event; not measured for nonstream",
+  "synchronization": "HTTP completion waits for all generated outputs; no extra MPS sync",
+  "rows": [
+    {
+      "device": "cpu",
+      "concurrency": 1,
+      "stream": false,
+      "median_ms": 5.5285,
+      "median_first_event_ms": null,
+      "samples": [
+        {
+          "wall_ms": 5.953292,
+          "requests": [
+            {
+              "elapsed_ms": 5.924041,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.519292,
+          "requests": [
+            {
+              "elapsed_ms": 5.500292,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.5285,
+          "requests": [
+            {
+              "elapsed_ms": 5.500042,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.745541,
+          "requests": [
+            {
+              "elapsed_ms": 5.718833,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.472416,
+          "requests": [
+            {
+              "elapsed_ms": 5.452916,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.65175,
+          "requests": [
+            {
+              "elapsed_ms": 5.63075,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.355958,
+          "requests": [
+            {
+              "elapsed_ms": 5.335958,
+              "first_event_ms": null
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "cpu",
+      "concurrency": 1,
+      "stream": true,
+      "median_ms": 5.778708,
+      "median_first_event_ms": 0.90625,
+      "samples": [
+        {
+          "wall_ms": 5.824416,
+          "requests": [
+            {
+              "elapsed_ms": 5.7595,
+              "first_event_ms": 0.90625
+            }
+          ]
+        },
+        {
+          "wall_ms": 6.12575,
+          "requests": [
+            {
+              "elapsed_ms": 6.04125,
+              "first_event_ms": 1.015583
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.726667,
+          "requests": [
+            {
+              "elapsed_ms": 5.703125,
+              "first_event_ms": 0.876792
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.976375,
+          "requests": [
+            {
+              "elapsed_ms": 5.947667,
+              "first_event_ms": 1.1245
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.599625,
+          "requests": [
+            {
+              "elapsed_ms": 5.573666,
+              "first_event_ms": 0.832291
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.713,
+          "requests": [
+            {
+              "elapsed_ms": 5.686291,
+              "first_event_ms": 1.051
+            }
+          ]
+        },
+        {
+          "wall_ms": 5.778708,
+          "requests": [
+            {
+              "elapsed_ms": 5.72625,
+              "first_event_ms": 0.868333
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "cpu",
+      "concurrency": 4,
+      "stream": false,
+      "median_ms": 10.048125,
+      "median_first_event_ms": null,
+      "samples": [
+        {
+          "wall_ms": 9.975791,
+          "requests": [
+            {
+              "elapsed_ms": 9.069042,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.689292,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.666916,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.614334,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 9.934875,
+          "requests": [
+            {
+              "elapsed_ms": 9.50325,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.613416,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.608834,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.55925,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 53.91,
+          "requests": [
+            {
+              "elapsed_ms": 52.775,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 53.689041,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 53.718833,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 53.739375,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 10.407083,
+          "requests": [
+            {
+              "elapsed_ms": 10.286416,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 10.25175,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.274833,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.929291,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 9.887458,
+          "requests": [
+            {
+              "elapsed_ms": 9.043708,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.735583,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.6605,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.704083,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 10.048125,
+          "requests": [
+            {
+              "elapsed_ms": 9.16175,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.768375,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.812042,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.63175,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 10.08025,
+          "requests": [
+            {
+              "elapsed_ms": 9.2185,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 10.003167,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.855958,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 9.848125,
+              "first_event_ms": null
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "cpu",
+      "concurrency": 4,
+      "stream": true,
+      "median_ms": 11.903292,
+      "median_first_event_ms": 2.7383335,
+      "samples": [
+        {
+          "wall_ms": 11.961875,
+          "requests": [
+            {
+              "elapsed_ms": 11.148458,
+              "first_event_ms": 2.302958
+            },
+            {
+              "elapsed_ms": 11.867,
+              "first_event_ms": 2.815083
+            },
+            {
+              "elapsed_ms": 11.804,
+              "first_event_ms": 2.831041
+            },
+            {
+              "elapsed_ms": 11.561334,
+              "first_event_ms": 2.754542
+            }
+          ]
+        },
+        {
+          "wall_ms": 12.120917,
+          "requests": [
+            {
+              "elapsed_ms": 11.2265,
+              "first_event_ms": 2.488875
+            },
+            {
+              "elapsed_ms": 11.18,
+              "first_event_ms": 2.406708
+            },
+            {
+              "elapsed_ms": 11.852208,
+              "first_event_ms": 3.008167
+            },
+            {
+              "elapsed_ms": 11.660333,
+              "first_event_ms": 2.856708
+            }
+          ]
+        },
+        {
+          "wall_ms": 12.2625,
+          "requests": [
+            {
+              "elapsed_ms": 11.385583,
+              "first_event_ms": 2.401083
+            },
+            {
+              "elapsed_ms": 12.020209,
+              "first_event_ms": 2.992042
+            },
+            {
+              "elapsed_ms": 11.927875,
+              "first_event_ms": 2.961709
+            },
+            {
+              "elapsed_ms": 12.031708,
+              "first_event_ms": 2.84175
+            }
+          ]
+        },
+        {
+          "wall_ms": 11.608375,
+          "requests": [
+            {
+              "elapsed_ms": 10.747541,
+              "first_event_ms": 2.414708
+            },
+            {
+              "elapsed_ms": 11.401459,
+              "first_event_ms": 2.906
+            },
+            {
+              "elapsed_ms": 11.299458,
+              "first_event_ms": 2.85225
+            },
+            {
+              "elapsed_ms": 11.03675,
+              "first_event_ms": 2.78225
+            }
+          ]
+        },
+        {
+          "wall_ms": 11.903292,
+          "requests": [
+            {
+              "elapsed_ms": 11.010833,
+              "first_event_ms": 2.182791
+            },
+            {
+              "elapsed_ms": 11.728084,
+              "first_event_ms": 2.713917
+            },
+            {
+              "elapsed_ms": 11.777667,
+              "first_event_ms": 2.722125
+            },
+            {
+              "elapsed_ms": 11.695959,
+              "first_event_ms": 2.693417
+            }
+          ]
+        },
+        {
+          "wall_ms": 11.737208,
+          "requests": [
+            {
+              "elapsed_ms": 10.937875,
+              "first_event_ms": 2.367208
+            },
+            {
+              "elapsed_ms": 11.058459,
+              "first_event_ms": 2.310584
+            },
+            {
+              "elapsed_ms": 10.872125,
+              "first_event_ms": 2.185417
+            },
+            {
+              "elapsed_ms": 11.355208,
+              "first_event_ms": 2.721958
+            }
+          ]
+        },
+        {
+          "wall_ms": 11.896084,
+          "requests": [
+            {
+              "elapsed_ms": 11.012042,
+              "first_event_ms": 2.331458
+            },
+            {
+              "elapsed_ms": 11.5755,
+              "first_event_ms": 2.894166
+            },
+            {
+              "elapsed_ms": 11.746667,
+              "first_event_ms": 2.873875
+            },
+            {
+              "elapsed_ms": 11.612709,
+              "first_event_ms": 2.855875
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "mps",
+      "concurrency": 1,
+      "stream": false,
+      "median_ms": 35.41075,
+      "median_first_event_ms": null,
+      "samples": [
+        {
+          "wall_ms": 48.013333,
+          "requests": [
+            {
+              "elapsed_ms": 47.97975,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 36.105292,
+          "requests": [
+            {
+              "elapsed_ms": 36.073875,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.311417,
+          "requests": [
+            {
+              "elapsed_ms": 35.285125,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.310125,
+          "requests": [
+            {
+              "elapsed_ms": 35.280542,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 34.997625,
+          "requests": [
+            {
+              "elapsed_ms": 34.970459,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.41075,
+          "requests": [
+            {
+              "elapsed_ms": 35.379667,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 36.29475,
+          "requests": [
+            {
+              "elapsed_ms": 36.263208,
+              "first_event_ms": null
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "mps",
+      "concurrency": 1,
+      "stream": true,
+      "median_ms": 35.246458,
+      "median_first_event_ms": 2.969167,
+      "samples": [
+        {
+          "wall_ms": 40.444875,
+          "requests": [
+            {
+              "elapsed_ms": 40.383,
+              "first_event_ms": 3.346292
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.246458,
+          "requests": [
+            {
+              "elapsed_ms": 35.21475,
+              "first_event_ms": 2.976458
+            }
+          ]
+        },
+        {
+          "wall_ms": 34.483542,
+          "requests": [
+            {
+              "elapsed_ms": 34.455875,
+              "first_event_ms": 2.612667
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.945958,
+          "requests": [
+            {
+              "elapsed_ms": 35.915667,
+              "first_event_ms": 2.969167
+            }
+          ]
+        },
+        {
+          "wall_ms": 35.645959,
+          "requests": [
+            {
+              "elapsed_ms": 35.617458,
+              "first_event_ms": 2.736791
+            }
+          ]
+        },
+        {
+          "wall_ms": 34.710625,
+          "requests": [
+            {
+              "elapsed_ms": 34.680416,
+              "first_event_ms": 2.936625
+            }
+          ]
+        },
+        {
+          "wall_ms": 34.9365,
+          "requests": [
+            {
+              "elapsed_ms": 34.874542,
+              "first_event_ms": 3.038459
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "mps",
+      "concurrency": 4,
+      "stream": false,
+      "median_ms": 44.755541,
+      "median_first_event_ms": null,
+      "samples": [
+        {
+          "wall_ms": 44.361958,
+          "requests": [
+            {
+              "elapsed_ms": 44.297958,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 41.557292,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 43.986,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 43.936167,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 45.046917,
+          "requests": [
+            {
+              "elapsed_ms": 42.109083,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.763083,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.70725,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.658083,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 44.755541,
+          "requests": [
+            {
+              "elapsed_ms": 42.004416,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.493708,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.519583,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.54875,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 48.644834,
+          "requests": [
+            {
+              "elapsed_ms": 48.48025,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 48.433042,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 48.15425,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 48.18325,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 47.36925,
+          "requests": [
+            {
+              "elapsed_ms": 44.662708,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 47.173,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 47.221,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 47.147875,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 44.487875,
+          "requests": [
+            {
+              "elapsed_ms": 41.764292,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.257167,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.22125,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 44.120208,
+              "first_event_ms": null
+            }
+          ]
+        },
+        {
+          "wall_ms": 43.6115,
+          "requests": [
+            {
+              "elapsed_ms": 40.81425,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 43.380541,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 43.400916,
+              "first_event_ms": null
+            },
+            {
+              "elapsed_ms": 43.430667,
+              "first_event_ms": null
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    },
+    {
+      "device": "mps",
+      "concurrency": 4,
+      "stream": true,
+      "median_ms": 44.886541,
+      "median_first_event_ms": 5.993375,
+      "samples": [
+        {
+          "wall_ms": 44.886541,
+          "requests": [
+            {
+              "elapsed_ms": 42.21725,
+              "first_event_ms": 3.602167
+            },
+            {
+              "elapsed_ms": 44.511458,
+              "first_event_ms": 6.084042
+            },
+            {
+              "elapsed_ms": 44.639,
+              "first_event_ms": 6.0005
+            },
+            {
+              "elapsed_ms": 44.678875,
+              "first_event_ms": 5.969
+            }
+          ]
+        },
+        {
+          "wall_ms": 44.929459,
+          "requests": [
+            {
+              "elapsed_ms": 42.295792,
+              "first_event_ms": 3.777
+            },
+            {
+              "elapsed_ms": 44.610625,
+              "first_event_ms": 6.137042
+            },
+            {
+              "elapsed_ms": 44.585042,
+              "first_event_ms": 6.094417
+            },
+            {
+              "elapsed_ms": 44.55275,
+              "first_event_ms": 6.0165
+            }
+          ]
+        },
+        {
+          "wall_ms": 45.374292,
+          "requests": [
+            {
+              "elapsed_ms": 43.044542,
+              "first_event_ms": 4.003708
+            },
+            {
+              "elapsed_ms": 42.836042,
+              "first_event_ms": 3.9445
+            },
+            {
+              "elapsed_ms": 45.186417,
+              "first_event_ms": 6.61225
+            },
+            {
+              "elapsed_ms": 45.178166,
+              "first_event_ms": 6.528333
+            }
+          ]
+        },
+        {
+          "wall_ms": 45.723084,
+          "requests": [
+            {
+              "elapsed_ms": 43.491833,
+              "first_event_ms": 4.262833
+            },
+            {
+              "elapsed_ms": 43.425208,
+              "first_event_ms": 4.148042
+            },
+            {
+              "elapsed_ms": 45.420834,
+              "first_event_ms": 6.658167
+            },
+            {
+              "elapsed_ms": 45.250541,
+              "first_event_ms": 6.473208
+            }
+          ]
+        },
+        {
+          "wall_ms": 44.561959,
+          "requests": [
+            {
+              "elapsed_ms": 41.84,
+              "first_event_ms": 3.889459
+            },
+            {
+              "elapsed_ms": 44.430084,
+              "first_event_ms": 6.423625
+            },
+            {
+              "elapsed_ms": 44.3075,
+              "first_event_ms": 6.40775
+            },
+            {
+              "elapsed_ms": 44.362417,
+              "first_event_ms": 6.3465
+            }
+          ]
+        },
+        {
+          "wall_ms": 43.808083,
+          "requests": [
+            {
+              "elapsed_ms": 43.756417,
+              "first_event_ms": 6.288625
+            },
+            {
+              "elapsed_ms": 41.06875,
+              "first_event_ms": 3.468041
+            },
+            {
+              "elapsed_ms": 43.483542,
+              "first_event_ms": 5.98625
+            },
+            {
+              "elapsed_ms": 43.259791,
+              "first_event_ms": 5.944583
+            }
+          ]
+        },
+        {
+          "wall_ms": 43.867459,
+          "requests": [
+            {
+              "elapsed_ms": 41.062625,
+              "first_event_ms": 3.404416
+            },
+            {
+              "elapsed_ms": 43.57675,
+              "first_event_ms": 5.964083
+            },
+            {
+              "elapsed_ms": 43.731125,
+              "first_event_ms": 6.046458
+            },
+            {
+              "elapsed_ms": 43.524666,
+              "first_event_ms": 5.888
+            }
+          ]
+        }
+      ],
+      "text_matches_hugging_face": true
+    }
+  ]
+}

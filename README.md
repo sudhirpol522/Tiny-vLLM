@@ -8,9 +8,10 @@ LLM inference components for CPU and Apple Silicon, built up one part at a time.
 - Local or Hugging Face safetensors loading on CPU and MPS.
 - Greedy, temperature, top-k, and top-p sampling.
 - Offline generation with incremental output, EOS handling, and cancellation.
+- Completion/chat HTTP endpoints with JSON and SSE streaming.
 
-The generation loop connects the scheduler, model, cache, and sampler. HTTP
-serving is next. FlashAttention and CUDA graphs are not used on the Mac.
+The generation loop connects the scheduler, model, cache, and sampler.
+FlashAttention and CUDA graphs are not used on the Mac.
 
 ## Setup
 
@@ -26,31 +27,51 @@ python -m examples.generate --device mps
 
 Use `cpu` when MPS is unavailable. The demo uses random weights and a synthetic
 vocabulary. For a compatible checkpoint, pass `--model <directory-or-hub-id>` and
-`--prompt "Your prompt"`. **62 tests pass**, including Hugging Face generation
-parity, prefix reuse, preemption, and CPU/MPS checks.
+`--prompt "Your prompt"`. **83 tests pass**, including generation parity, HTTP
+validation, concurrent requests, and CPU/MPS streaming/disconnect checks.
+
+## Serve
+
+```bash
+python -m tiny_vllm.serve --demo --device cpu
+# For trained weights: --model <directory-or-hub-id> --device mps
+```
+
+In another terminal:
+
+```bash
+curl -N http://127.0.0.1:8000/v1/completions \
+  -H 'Content-Type: application/json' \
+  -d '{"prompt":"t4 t5 t6","temperature":0,"max_tokens":16,"stream":true}'
+```
+
+Also available: `/v1/chat/completions`, `/v1/models`, `/health`, and JSON `/metrics`.
+Set `stream` to `false` for a single JSON response. Chat uses the loaded
+tokenizer's template; only text and one output per request are supported.
 
 ## Benchmarks
 
 Apple M5 · float32 · PyTorch 2.14.1 · one CPU thread. Seven-run medians, in ms.
-Generation uses an **86,528-parameter random model with vocabulary size 97**,
-producing 16 tokens per request. Every run matches Hugging Face's output tokens.
+Loopback HTTP uses an **86,528-parameter random model with vocabulary size 97**,
+producing 16 tokens per request with a warm prefix cache.
 
-| Workload | Tiny-vLLM CPU | HF CPU | Tiny-vLLM MPS | HF MPS |
-| --- | ---: | ---: | ---: | ---: |
-| 1 request, 32-token prompt | 3.42 | 5.06 | 56.46 | 56.77 |
-| 8 requests, mixed prompt lengths | 10.08 | 7.44 | 123.94 | 63.67 |
-| 8 requests, shared 24-token prefix | 8.36 | 6.46 | 104.09 | 62.08 |
+| Device | Concurrent clients | JSON total | SSE total |
+| --- | ---: | ---: | ---: |
+| CPU | 1 | 5.53 | 5.78 |
+| CPU | 4 | 10.05 | 11.90 |
+| MPS | 1 | 35.41 | 35.25 |
+| MPS | 4 | 44.76 | 44.89 |
 
-![Offline generation timings](benchmarks/results/generation.png)
+![Loopback HTTP and streaming timings](benchmarks/results/http.png)
 
-These are tiny-fixture results, not pretrained-model performance. HF uses eager
-attention and one padded batch; Tiny-vLLM uses paged reference attention and
-continuous batching. Model loading is excluded from timing.
+Timing covers all concurrent requests, including client parsing. Output matches
+Hugging Face. These tiny-fixture results exclude loading and do not represent
+pretrained-model serving performance.
 
 Run the latest benchmark and regenerate all Matplotlib charts:
 
 ```bash
-python -m benchmarks.generation --devices cpu mps
+python -m benchmarks.http --devices cpu mps
 python -m benchmarks.charts
 ```
 
@@ -61,7 +82,8 @@ python -m benchmarks.charts
 [MPS attention](benchmarks/results/attention_mps.png) ·
 [Model](benchmarks/results/model.png) ·
 [Loading](benchmarks/results/loading.png) ·
-[Sampling](benchmarks/results/sampling.png)
+[Sampling](benchmarks/results/sampling.png) ·
+[Offline generation](benchmarks/results/generation.png)
 
 Implementation extracted and adapted from [tinyserve](https://github.com/priyammaz/tinyserve).
 [Implementation notes](UPSTREAM.md).

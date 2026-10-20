@@ -14,6 +14,7 @@ before and after the timed calls. Case order and raw samples are recorded in JSO
 | Loading | 86,528-parameter local Hugging Face Qwen3 fixture; 1 warmup; 7 loads | [JSON](results/loading.json) |
 | Sampling | 32,768-logit vocabulary, batches of 1/8/32; 3 warmups; 7 samples of 5 calls | [JSON](results/sampling.json) |
 | Generation | 86,528 random parameters; vocabulary 97; 16 output tokens/request; 1 warmup, 7 runs | [JSON](results/generation.json) |
+| HTTP/SSE | Loopback TCP; 1/4 concurrent clients; warm prefix cache; 16 outputs/request; 7 runs | [JSON](results/http.json) |
 
 The attention control uses already-contiguous K/V with the same SDPA operation;
 it is not a serving baseline. Model calls include cache writes and logits for all
@@ -37,6 +38,23 @@ cache allocation are excluded; input packing, sampling, and returned token IDs
 are included. Tiny-vLLM also incrementally decodes text. Method order alternates
 across seven runs; every measured output is checked for token identity.
 
+The HTTP benchmark uses Uvicorn on an ephemeral loopback port and the same tiny
+fixture. Repeated 16-token prompts keep the prefix cache warm. JSON/SSE mode
+order alternates across seven runs at concurrency 1 and 4, after one warmup per
+mode. Timing includes loopback TCP, queueing, generation, serialization, and
+client parsing; server startup and checkpoint loading are excluded. The SSE
+first-event metric ends at the first data event received by the client. Text is
+checked against Hugging Face for every request; these are local fixture results.
+
+| Device | Concurrent clients | JSON total, ms | SSE total, ms |
+| --- | ---: | ---: | ---: |
+| CPU | 1 | 5.53 | 5.78 |
+| CPU | 4 | 10.05 | 11.90 |
+| MPS | 1 | 35.41 | 35.25 |
+| MPS | 4 | 44.76 | 44.89 |
+
+![Loopback HTTP timings](results/http.png)
+
 ## Reproduce
 
 From the repository root, after installing requirements:
@@ -48,6 +66,7 @@ python -m benchmarks.attention --devices cpu mps
 python -m benchmarks.model --devices cpu mps
 python -m benchmarks.loading_sampling --devices cpu mps
 python -m benchmarks.generation --devices cpu mps
+python -m benchmarks.http --devices cpu mps
 python -m benchmarks.charts
 ```
 

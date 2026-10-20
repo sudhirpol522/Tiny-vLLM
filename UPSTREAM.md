@@ -86,6 +86,22 @@ offline generation benchmark compares the same random checkpoint using our
 reference backend and Hugging Face eager attention. It is not a pretrained-model
 or production-serving benchmark.
 
+The seventh component adapts upstream `AsyncEngine` and `build_app` into
+`tiny_vllm/async_engine.py` and `tiny_vllm/server.py`. It retains the background
+thread/inbox/output-queue architecture, model sampling defaults, completion/chat
+response shapes, usage accounting, chat templates, and SSE framing. These
+definitions are adapted rather than verbatim copies: lifecycle shutdown,
+thread-safe stream registration, failure propagation, structured validation,
+disconnect cleanup, optional streaming usage, and initial chat role events are
+added. Model ownership labels use Tiny-vLLM.
+
+`tiny_vllm/serve.py` is a local CLI around Uvicorn with one engine worker and a
+loopback default. Chat remains text-only; unsupported request fields return an
+error. `/metrics` exposes JSON counts, not Prometheus exposition. The synthetic
+fixture now includes a minimal test-only chat template. Socket tests verify
+early streaming and abort/release on client disconnect on CPU and MPS. The
+loopback HTTP benchmark and Matplotlib chart are local validation additions.
+
 No license file was present in the upstream root listing when inspected. No
 license is granted here for the upstream code. Reuse/distribution permission
 needs to be established before publishing the copied source.

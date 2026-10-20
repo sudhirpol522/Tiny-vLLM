@@ -19,5 +19,6 @@ def generation_fixture(folder):
     backend.pre_tokenizer = Whitespace()
     tokenizer = PreTrainedTokenizerFast(tokenizer_object=backend, unk_token='t1',
                                        pad_token='t0', eos_token='t2', bos_token='t3')
+    tokenizer.chat_template = "{% for message in messages %}{{ message['content'] }} {% endfor %}"
     tokenizer.save_pretrained(folder)
     return hf, tokenizer

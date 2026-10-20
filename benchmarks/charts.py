@@ -120,11 +120,23 @@ def plot_generation(rows, path):
            xlabel='Milliseconds per complete workload (median)', legend_loc='upper right')
 
 
+def plot_http(rows, path):
+    groups = list(dict.fromkeys((r['device'], r['concurrency']) for r in rows))
+    paired(rows, [f'{device.upper()} · {count} concurrent' for device, count in groups],
+           [('JSON', [next(r['median_ms'] for r in rows if r['device'] == d and
+                          r['concurrency'] == n and not r['stream']) for d, n in groups]),
+            ('SSE', [next(r['median_ms'] for r in rows if r['device'] == d and
+                         r['concurrency'] == n and r['stream']) for d, n in groups])],
+           'Loopback HTTP · local random-weight fixture', path,
+           '86,528 parameters · 16 outputs/request · 7 runs · warm prefix cache · includes client parsing',
+           xlabel='Milliseconds for all concurrent requests (median)', legend_loc='upper right')
+
+
 def main():
     output = Path('benchmarks/results')
     for name, render in [('kv_cache', plot_kv), ('scheduler', plot_scheduler), ('model', plot_model),
                          ('sampling', plot_sampling), ('loading', plot_loading),
-                         ('generation', plot_generation)]:
+                         ('generation', plot_generation), ('http', plot_http)]:
         file = output / f'{name}.json'
         if file.exists():
             render(json.loads(file.read_text())['rows'], output / f'{name}.png')
