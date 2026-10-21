@@ -146,5 +146,5 @@ Use `cpu` when MPS is unavailable.
 
 ## Acknowledgments
 
-The core engine is adapted from [priyammaz/tinyserve](https://github.com/priyammaz/tinyserve), used with the author's permission. See [UPSTREAM.md](UPSTREAM.md) for details on what's adapted versus original.
+The core engine is adapted from [priyammaz/tinyserve](https://github.com/priyammaz/tinyserve). See [UPSTREAM.md](UPSTREAM.md) for details on what's adapted versus original.
 
